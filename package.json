@@ -10,6 +10,7 @@
   "dependencies": {
     "@jiaminghi/data-view": "^2.10.0",
     "core-js": "^3.6.5",
+    "echarts": "^5.1.1",
     "vue": "^3.0.0",
     "vue-class-component": "^8.0.0-0",
     "vue-router": "^4.0.0-0",
