@@ -14,7 +14,7 @@ $colors: (
 );
 
 // 字体大小
-$base-font-size: 0.2rem;
+$base-font-size: 16px;
 $font-sizes: (
   xxs: 0.1,
   //8px
@@ -86,7 +86,7 @@ $spacing-directions: (
   b: bottom,
   l: left,
 );
-$spacing-base-size: 0.2rem;
+$spacing-base-size: 16px;
 $spacing-sizes: (
   0: 0,
   1: 0.25,
