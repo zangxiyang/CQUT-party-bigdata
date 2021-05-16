@@ -15,39 +15,23 @@ export default function useIndex() {
   const baseHeight = 1080
 
   // * 需保持的比例（默认1.77778）
-  const baseProportion = (baseWidth / baseHeight).toFixed(5)
+  const baseProportion = parseFloat((baseWidth / baseHeight).toFixed(5))
 
   const calcRate = () => {
     // 当前宽高比
-    const currentRate = (window.innerWidth / window.innerHeight).toFixed(5)
-
+    const currentRate = parseFloat((window.innerWidth / window.innerHeight).toFixed(5))
     if (appRef.value) {
       if (currentRate > baseProportion) {
         // 表示更宽
-        scale.width = (
-          (window.innerHeight * parseFloat(baseProportion)) /
-          baseWidth
-        ).toFixed(5)
+        scale.width = ((window.innerHeight * baseProportion) / baseWidth).toFixed(5)
         scale.height = (window.innerHeight / baseHeight).toFixed(5)
-        appRef.value.style.transform = `scale(${scale.width},${scale.height})`
+        appRef.value.style.transform = `scale(${scale.width}, ${scale.height}) translate(-50%, -50%)`
       } else {
         // 表示更高
-        appRef.value.style.transform = `scale(1,1)`
+        scale.height = ((window.innerWidth / baseProportion) / baseHeight).toFixed(5)
+        scale.width = (window.innerWidth / baseWidth).toFixed(5)
+        appRef.value.style.transform = `scale(${scale.width}, ${scale.height}) translate(-50%, -50%)`
       }
-      // 设置比例
-      // scale.width = (window.innerHeight / baseHeight).toFixed(5)
-      // scale.height = (window.innerWidth / baseWidth).toFixed(5)
-
-      // appRef.value.style.transform = `scale(${scale.width},${scale.height})`
-      // if (currentRate > baseRate) {
-      //   // 以高为准
-      //   scale.value = (window.innerHeight / baseHeight.value).toFixed(5)
-      //   appRef.value.style.transform = 'scale(' + scale.value + ')'
-      // } else {
-      //   // 以宽为准
-      //   scale.value = (window.innerWidth / baseWidth.value).toFixed(5)
-      //   appRef.value.style.transform = 'scale(' + scale.value + ')'
-      // }
     }
   }
 

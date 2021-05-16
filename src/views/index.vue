@@ -1,6 +1,6 @@
 <template>
   <div id="index" ref="appRef">
-    <dv-full-screen-container class="bg">
+    <div class="bg">
       <dv-loading v-if="loading">Loading...</dv-loading>
       <div v-else class="host-body">
         <div class="d-flex jc-center">
@@ -84,7 +84,7 @@
             </div>
             <!-- 中间 -->
             <div>
-              <centerRight2 />
+              <!-- <centerRight2 /> -->
             </div>
             <div>
               <dv-border-box-13>
@@ -104,7 +104,7 @@
           </div>
         </div>
       </div>
-    </dv-full-screen-container>
+    </div>
   </div>
 </template>
 
