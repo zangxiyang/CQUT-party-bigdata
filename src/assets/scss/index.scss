@@ -17,6 +17,18 @@
   }
 
   .host-body {
+    .dv-dec-10,
+    .dv-dec-10-s {
+      width: 33.3%;
+      height: 5px;
+    }
+    .dv-dec-10-s {
+      transform: rotateY(180deg);
+    }
+    .dv-dec-8 {
+      width: 200px;
+      height: 50px;
+    }
     .title {
       position: relative;
       width: 500px;
@@ -32,16 +44,31 @@
         transform: translate(-50%);
       }
 
-      .title-bototm {
+      .dv-dec-6 {
         position: absolute;
         bottom: -30px;
         left: 50%;
+        width: 250px;
+        height: 8px;
         transform: translate(-50%);
       }
     }
 
+    // 第二行
+    .aside-width {
+      width: 40%;
+    }
+    .react-r-s,
+    .react-l-s {
+      background-color: #0f1325;
+    }
+
     // 平行四边形
-    .react-left {
+    .react-right {
+      &.react-l-s {
+        text-align: right;
+        width: 500px;
+      }
       cursor: pointer;
       font-size: 18px;
       width: 300px;
@@ -65,7 +92,11 @@
       }
     }
 
-    .react-right {
+    .react-left {
+      &.react-l-s {
+        width: 500px;
+        text-align: left;
+      }
       cursor: pointer;
       font-size: 18px;
       width: 300px;
@@ -73,6 +104,7 @@
       line-height: 50px;
       text-align: center;
       transform: skewX(45deg);
+      background-color: #0f1325;
 
       .react-before {
         position: absolute;

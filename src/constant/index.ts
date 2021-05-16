@@ -10,7 +10,9 @@ type ModuleInfo = {
   name: string
   icon: string
 }[]
+
 export const moduleInfo: ModuleInfo = [
+  // 中间的几个模块
   {
     name: '任务通过率',
     icon: 'icon-chart-bar',
@@ -27,6 +29,7 @@ export const moduleInfo: ModuleInfo = [
     name: '任务完成排行榜',
     icon: 'icon-zhibiao2',
   },
+  // 底部两个模块
   {
     name: '数据统计图',
     icon: 'icon-vector',

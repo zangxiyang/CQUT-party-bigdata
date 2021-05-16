@@ -4,58 +4,42 @@
       <dv-loading v-if="loading">Loading...</dv-loading>
       <div v-else class="host-body">
         <div class="d-flex jc-center">
-          <dv-decoration-10 style="width: 33.3%; height: 5px;" />
+          <dv-decoration-10 class="dv-dec-10" />
           <div class="d-flex jc-center">
-            <dv-decoration-8
-              :color="['#568aea', '#000000']"
-              style="width: 200px; height: 50px;"
-            />
+            <dv-decoration-8 class="dv-dec-8" :color="['#568aea', '#000000']" />
             <div class="title">
-              <span class="title-text">{{title}}</span>
+              <span class="title-text">{{ title }}</span>
               <dv-decoration-6
-                class="title-bototm"
+                class="dv-dec-6"
                 :reverse="true"
                 :color="['#50e3c2', '#67a1e5']"
-                style="width: 250px; height: 8px;"
               />
             </div>
             <dv-decoration-8
+              class="dv-dec-8"
               :reverse="true"
               :color="['#568aea', '#000000']"
-              style="width: 200px; height: 50px;"
             />
           </div>
-          <dv-decoration-10
-            style="width: 33.3%; height: 5px; transform: rotateY(180deg);"
-          />
+          <dv-decoration-10 class="dv-dec-10-s" />
         </div>
 
         <!-- 第二行 -->
         <div class="d-flex jc-between px-2">
-          <div class="d-flex" style="width: 40%;">
-            <div
-              class="react-right ml-4"
-              style="width: 500px; text-align: left; background-color: #0f1325;"
-            >
+          <div class="d-flex aside-width">
+            <div class="react-left ml-4 react-l-s">
               <span class="react-before"></span>
-              <span class="text">数据分析1</span>
+              <span class="text">{{subtitle[0]}}</span>
             </div>
-            <div class="react-right ml-3" style="background-color: #0f1325;">
-              <span class="text colorBlue">数据分析2</span>
+            <div class="react-left ml-3" >
+              <span class="text colorBlue">{{subtitle[1]}}</span>
             </div>
           </div>
-          <div style="width: 40%;" class="d-flex">
-            <div class="react-left bg-color-blue mr-3">
-              <span class="text fw-b">vue-big-screen</span>
+          <div class="d-flex aside-width">
+            <div class="react-right bg-color-blue mr-3">
+              <span class="text fw-b">{{subtitle[2]}}</span>
             </div>
-            <div
-              class="react-left mr-4"
-              style="
-                width: 500px;
-                background-color: #0f1325;
-                text-align: right;
-              "
-            >
+            <div class="react-right mr-4 react-l-s">
               <span class="react-after"></span>
               <span class="text">
                 {{ timeInfo.dateYear }} {{ timeInfo.dateWeek }}
