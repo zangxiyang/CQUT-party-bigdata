@@ -16,7 +16,6 @@ export default function useIndex() {
 
   // * 需保持的比例（默认1.77778）
   const baseProportion = parseFloat((baseWidth / baseHeight).toFixed(5))
-
   const calcRate = () => {
     // 当前宽高比
     const currentRate = parseFloat((window.innerWidth / window.innerHeight).toFixed(5))
@@ -25,12 +24,14 @@ export default function useIndex() {
         // 表示更宽
         scale.width = ((window.innerHeight * baseProportion) / baseWidth).toFixed(5)
         scale.height = (window.innerHeight / baseHeight).toFixed(5)
-        appRef.value.style.transform = `scale(${scale.width}, ${scale.height}) translate(-50%, -50%)`
+        // appRef.value.style.transform = `scale(${scale.width}, ${scale.height} translate(-50%, -50%)`
+        appRef.value.style.transform = `scale(${scale.width}, ${scale.height}`
       } else {
         // 表示更高
         scale.height = ((window.innerWidth / baseProportion) / baseHeight).toFixed(5)
         scale.width = (window.innerWidth / baseWidth).toFixed(5)
-        appRef.value.style.transform = `scale(${scale.width}, ${scale.height}) translate(-50%, -50%)`
+        // appRef.value.style.transform = `scale(${scale.width}, ${scale.height}) translate(-50%, -50%)`
+        appRef.value.style.transform = `scale(${scale.width}, ${scale.height})`
       }
     }
   }
@@ -39,7 +40,7 @@ export default function useIndex() {
     clearTimeout(timer.value)
     timer.value = setTimeout(() => {
       calcRate()
-    }, 100)
+    }, 200)
   }
 
   // 改变窗口大小重新绘制

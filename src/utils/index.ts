@@ -1,24 +1,12 @@
 /**
- * @param {Function} fn 防抖函数
- * @param {Number} delay 延迟时间
- */
-export const debounce = (fn: Function, delay: number) => {
-  let timer: number
-  return function (this: any) {
-    let context = this
-    let args = arguments
-    clearTimeout(timer)
-    timer = setTimeout(function () {
-      fn.apply(context, args)
-    }, delay)
-  }
-}
-
-/**
  * @param {date} time 需要转换的时间
  * @param {String} fmt 需要转换的格式 如 yyyy-MM-dd、yyyy-MM-dd HH:mm:ss
+ * @returns {String}
  */
-export const formatTime = (time: any , fmt: string): string => {
+export const formatTime = (
+  time: string | number | Date,
+  fmt: string
+): string => {
   if (!time) return ''
   const date = new Date(time)
   const o = {
@@ -28,7 +16,7 @@ export const formatTime = (time: any , fmt: string): string => {
     'm+': date.getMinutes(),
     's+': date.getSeconds(),
     'q+': Math.floor((date.getMonth() + 3) / 3),
-    'S': date.getMilliseconds(),
+    S: date.getMilliseconds(),
   }
   if (/(y+)/.test(fmt))
     fmt = fmt.replace(
@@ -39,6 +27,7 @@ export const formatTime = (time: any , fmt: string): string => {
     if (new RegExp('(' + k + ')').test(fmt)) {
       fmt = fmt.replace(
         RegExp.$1,
+        // @ts-ignore: Unreachable code error
         RegExp.$1.length === 1 ? o[k] : ('00' + o[k]).substr(('' + o[k]).length)
       )
     }

@@ -136,6 +136,7 @@ export default defineComponent({
       windowDraw()
       calcRate()
     })
+
     onBeforeUnmount(() => {
       clearInterval(timeInfo.setInterval)
     })

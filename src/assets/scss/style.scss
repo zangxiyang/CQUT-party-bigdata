@@ -20,11 +20,13 @@ body {
   background-color: #f1f1f1;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 a {
   color: #343440;
   text-decoration: none;
+  box-sizing: border-box;
 }
 
 .clearfix {
