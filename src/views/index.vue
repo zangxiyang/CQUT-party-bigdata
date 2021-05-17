@@ -54,7 +54,7 @@
           <div class="content-box">
             <div>
               <dv-border-box-12>
-                <!-- <centerLeft1 /> -->
+                <centerLeft1 />
               </dv-border-box-12>
             </div>
             <div>
@@ -98,8 +98,12 @@ import { formatTime } from '@/utils/index'
 import { WEEK } from '@/constant/index'
 import useIndex from '@/utils/useDraw'
 import { title, subtitle, moduleInfo } from '@/constant/index'
+import CenterLeft1 from "./centerLeft1/index.vue";
 
 export default defineComponent({
+  components: {
+    CenterLeft1,
+  },
   setup() {
     // * 加载标识
     const loading = ref<boolean>(true)
@@ -150,5 +154,5 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/scss/index.scss';
+@import '@/assets/scss/index.scss';
 </style>

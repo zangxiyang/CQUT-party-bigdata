@@ -12,8 +12,6 @@ import * as echarts from 'echarts';
 
 const app = createApp(App)
 
-// 全局挂载
-app.config.globalProperties.$echarts = echarts
 app.use(dataV)
 app.use(store)
 app.use(router)
