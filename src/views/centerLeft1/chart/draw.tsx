@@ -1,12 +1,6 @@
-<template>
-  <div>
-    <echart :options="options" height="220px" width="260px" />
-  </div>
-</template>
+import { defineComponent, watch, shallowReactive } from 'vue'
 
-<script lang="ts">
-import { defineComponent, watch, reactive } from 'vue'
-
+// 声明类型
 const PropsType = {
   cdata: {
     type: Object,
@@ -17,11 +11,13 @@ const PropsType = {
   }
 } as const
 
+// 定义主体
 export default defineComponent({
   props: PropsType,
   setup(props) {
     // 配置项
-    let options = reactive({})
+    let options = shallowReactive({})
+
     watch(
       () => props.cdata,
       (val: any) => {
@@ -71,7 +67,15 @@ export default defineComponent({
         deep: true
       }
     )
-    return { options }
+
+    return () => {
+      const height = "220px"
+      const width = "260px"
+      
+      return <div>
+        <echart options={options} height={height} width={width} />
+      </div>
+    }
   }
 })
-</script>
+

@@ -1,18 +1,9 @@
-<template>
-  <div
-    ref="chartRef"
-    :id="id"
-    :class="className"
-    :style="{ height: height, width: width }"
-  />
-</template>
-
-<script lang="ts">
-import { defineComponent, getCurrentInstance, onMounted, ref, watch } from 'vue'
+import { defineComponent, onMounted, ref, watch, onBeforeUnmount } from 'vue'
 import '@/common/map/fujian'
 import theme from '@/common/map/theme' // 引入默认主题
 import * as echarts from 'echarts'
 
+// 定义类型
 const PropsType = {
   id: String,
   className: {
@@ -21,11 +12,11 @@ const PropsType = {
   },
   width: {
     type: String,
-    default: '100%'
+    require: true
   },
   height: {
     type: String,
-    default: '400px'
+    require: true
   },
   options: {
     type: Object,
@@ -53,6 +44,11 @@ export default defineComponent({
       initChart()
     })
 
+    onBeforeUnmount(() => {
+      chart.value.dispose()
+      chart.value = null
+    })
+
     // 监听改变
     watch(
       () => props.options,
@@ -64,7 +60,17 @@ export default defineComponent({
       }
     )
 
-    return { chartRef }
+    return () => {
+      const { id, className, height, width } = props
+      return <div
+        ref={chartRef}
+        id={id as string}
+        class={className as string}
+        style={{
+          'height': height as string,
+          'width': width as string
+        }}
+      />
+    }
   }
 })
-</script>

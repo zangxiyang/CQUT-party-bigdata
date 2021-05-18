@@ -32,7 +32,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, reactive } from 'vue'
-import Chart from './chart/index.vue'
+import Chart from './chart/index'
 export default defineComponent({
   components: {
     Chart,
@@ -95,13 +95,16 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+$box-width: 300px;
+$box-height: 410px;
+
 .centreLeft1 {
   padding: 16px;
-  height: 410px;
-  min-width: 300px;
+  height: $box-height;
+  width: $box-width;
   border-radius: 5px;
   .bg-color-black {
-    height: 385px;
+    height: $box-height - 20px;
     border-radius: 10px;
   }
   .text {

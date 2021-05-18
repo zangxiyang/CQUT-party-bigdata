@@ -1,12 +1,5 @@
-<template>
-  <div>
-    <Draw :cdata="cdata" />
-  </div>
-</template>
-
-<script lang="ts">
-import Draw from './draw.vue'
-import { defineComponent, onMounted, reactive } from 'vue'
+import { defineComponent, reactive } from 'vue'
+import Draw from './draw'
 
 export default defineComponent({
   components: {
@@ -24,9 +17,11 @@ export default defineComponent({
         { value: 35, name: 'rose6' }
       ]
     })
-    return { cdata }
+
+    return () => {
+      return <div>
+        <Draw cdata={cdata} />
+      </div>
+    }
   }
 })
-</script>
-
-<style lang="scss" scoped></style>

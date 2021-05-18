@@ -98,7 +98,7 @@ import { formatTime } from '@/utils/index'
 import { WEEK } from '@/constant/index'
 import useIndex from '@/utils/useDraw'
 import { title, subtitle, moduleInfo } from '@/constant/index'
-import CenterLeft1 from "./centerLeft1/index.vue";
+import CenterLeft1 from "../centerLeft1/index.vue";
 
 export default defineComponent({
   components: {
