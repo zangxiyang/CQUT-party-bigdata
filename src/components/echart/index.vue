@@ -8,10 +8,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue'
+import { defineComponent, getCurrentInstance, onMounted, ref, watch } from 'vue'
 import '@/common/map/fujian'
 import theme from '@/common/map/theme' // 引入默认主题
-import * as echarts from "echarts";
+import * as echarts from 'echarts'
 
 const PropsType = {
   id: String,
@@ -38,21 +38,33 @@ export default defineComponent({
   props: PropsType,
   setup(props) {
     const chartRef = ref<HTMLElement>()
-    const chart = ref<any>();
-    // 定义实例
-    chart.value = echarts.init(chartRef.value, 'myTheme')
-    
-    // 生命周期
-    onMounted(() => {
-      echarts.registerTheme('myTheme', theme) // 覆盖默认主题
-      initChart()
-    })
+    const chart = ref<any>()
 
     // 初始化echart
     const initChart = () => {
       chart.value.setOption(props.options, true)
     }
-    return {chartRef}
+
+    // 生命周期
+    onMounted(() => {
+      // 定义实例
+      echarts.registerTheme('myTheme', theme) // 覆盖默认主题
+      chart.value = echarts.init(chartRef.value, 'myTheme')
+      initChart()
+    })
+
+    // 监听改变
+    watch(
+      () => props.options,
+      val => {
+        val && initChart()
+      },
+      {
+        deep: true
+      }
+    )
+
+    return { chartRef }
   }
 })
 </script>

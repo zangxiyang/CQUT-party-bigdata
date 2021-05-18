@@ -11,7 +11,7 @@
         </div>
       </div>
       <div class="d-flex jc-center">
-        <CentreLeft1Chart />
+        <chart />
       </div>
       <!-- 4个主要的数据 -->
       <div class="bottom-data">
@@ -32,8 +32,11 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, reactive } from 'vue'
-
+import Chart from './chart/index.vue'
 export default defineComponent({
+  components: {
+    Chart,
+  },
   setup() {
     // 下层数据
     const numberData = reactive([
