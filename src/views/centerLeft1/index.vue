@@ -3,7 +3,7 @@
     <div class="bg-color-black">
       <div class="d-flex pt-2 pl-2">
         <span>
-          <icon class="iconfont icon-tongji4"></icon>
+          <icon class="iconfont icon-tongji4" />
         </span>
         <div class="d-flex">
           <span class="fs-xl text mx-2">任务通过率</span>
@@ -104,7 +104,7 @@ $box-height: 410px;
   width: $box-width;
   border-radius: 5px;
   .bg-color-black {
-    height: $box-height - 20px;
+    height: $box-height - 30px;
     border-radius: 10px;
   }
   .text {

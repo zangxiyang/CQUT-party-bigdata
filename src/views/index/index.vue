@@ -59,7 +59,7 @@
             </div>
             <div>
               <dv-border-box-12>
-                <!-- <centerLeft2 /> -->
+                <centerLeft2 />
               </dv-border-box-12>
             </div>
             <!-- 中间 -->
@@ -99,10 +99,12 @@ import { WEEK } from '@/constant/index'
 import useIndex from '@/utils/useDraw'
 import { title, subtitle, moduleInfo } from '@/constant/index'
 import CenterLeft1 from "../centerLeft1/index.vue";
+import CenterLeft2 from "../centerLeft2/index.vue";
 
 export default defineComponent({
   components: {
     CenterLeft1,
+    CenterLeft2
   },
   setup() {
     // * 加载标识

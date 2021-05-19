@@ -7,14 +7,14 @@ export default defineComponent({
   },
   setup() {
     const cdata = reactive({
-      xData: ['rose1', 'rose2', 'rose3', 'rose4', 'rose5', 'rose6'],
+      xData: ['数据1', '数据2', '数据3', '数据4', '数据5', '数据6'],
       seriesData: [
-        { value: 10, name: 'rose1' },
-        { value: 5, name: 'rose2' },
-        { value: 15, name: 'rose3' },
-        { value: 25, name: 'rose4' },
-        { value: 20, name: 'rose5' },
-        { value: 35, name: 'rose6' }
+        { value: 10, name: '数据1' },
+        { value: 5, name: '数据2' },
+        { value: 15, name: '数据3' },
+        { value: 25, name: '数据4' },
+        { value: 20, name: '数据5' },
+        { value: 35, name: '数据6' }
       ]
     })
 

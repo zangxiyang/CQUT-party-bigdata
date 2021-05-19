@@ -54,9 +54,21 @@ export default defineComponent({
             {
               name: '通过率统计',
               type: 'pie',
-              radius: [10, 60],
+              radius: [10, 55],
               roseType: 'area',
               center: ['50%', '40%'],
+              itemStyle: {
+                borderRadius: 5
+              },
+              label: {
+                show: true,
+                color: "#fff",
+              },
+              emphasis: {
+                label: {
+                  show: false
+                }
+              },
               data: val.seriesData
             }
           ]
@@ -71,7 +83,7 @@ export default defineComponent({
     return () => {
       const height = "220px"
       const width = "260px"
-      
+
       return <div>
         <echart options={options} height={height} width={width} />
       </div>
