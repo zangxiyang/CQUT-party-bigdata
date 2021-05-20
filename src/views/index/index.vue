@@ -54,12 +54,12 @@
           <div class="content-box">
             <div>
               <dv-border-box-12>
-                <centerLeft1 />
+                <center-left1 />
               </dv-border-box-12>
             </div>
             <div>
               <dv-border-box-12>
-                <centerLeft2 />
+                <center-left2 />
               </dv-border-box-12>
             </div>
             <!-- 中间 -->
@@ -68,11 +68,11 @@
             </div>
             <!-- 中间 -->
             <div>
-              <!-- <centerRight2 /> -->
+              <center-right1 />
             </div>
             <div>
               <dv-border-box-13>
-                <!-- <centerRight1 /> -->
+                <center-right2 />
               </dv-border-box-13>
             </div>
           </div>
@@ -100,13 +100,17 @@ import useIndex from '@/utils/useDraw'
 import { title, subtitle, moduleInfo } from '@/constant/index'
 import CenterLeft1 from "../centerLeft1/index.vue";
 import CenterLeft2 from "../centerLeft2/index.vue";
+import CenterRight1 from "../centerRight1/index.vue";
+import CenterRight2 from "../centerRight2/index.vue";
 import Center from "../center/index.vue";
 
 export default defineComponent({
   components: {
     CenterLeft1,
     CenterLeft2,
-    Center
+    Center,
+    CenterRight1,
+    CenterRight2
   },
   setup() {
     // * 加载标识
