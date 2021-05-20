@@ -3,7 +3,7 @@
     <div class="bg-color-black">
       <div class="d-flex pt-2 pl-2">
         <span>
-          <icon class="iconfont icon-tongji4" />
+          <i class="iconfont icon-tongji4" />
         </span>
         <div class="d-flex">
           <span class="fs-xl text mx-2">任务通过率</span>

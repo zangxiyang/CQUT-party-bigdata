@@ -1,5 +1,5 @@
 <template>
-  <div id="centreLeft1">
+  <div class="centreLeft1">
     <div class="bg-color-black">
       <div class="d-flex pt-2 pl-2">
         <span>
@@ -28,7 +28,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-#centreLeft1 {
+.centreLeft1 {
   $box-width: 300px;
   $box-height: 410px;
   padding: 16px;

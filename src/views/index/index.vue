@@ -64,7 +64,7 @@
             </div>
             <!-- 中间 -->
             <div>
-              <!-- <center /> -->
+              <center />
             </div>
             <!-- 中间 -->
             <div>
@@ -100,11 +100,13 @@ import useIndex from '@/utils/useDraw'
 import { title, subtitle, moduleInfo } from '@/constant/index'
 import CenterLeft1 from "../centerLeft1/index.vue";
 import CenterLeft2 from "../centerLeft2/index.vue";
+import Center from "../center/index.vue";
 
 export default defineComponent({
   components: {
     CenterLeft1,
-    CenterLeft2
+    CenterLeft2,
+    Center
   },
   setup() {
     // * 加载标识
