@@ -1,16 +1,15 @@
 <template>
-  <div class="centreLeft1">
+  <div class="bottomLeft">
     <div class="bg-color-black">
       <div class="d-flex pt-2 pl-2">
         <span>
-          <icon class="iconfont icon-layer-group"></icon>
+          <i class="iconfont icon-chart-line" />
         </span>
         <div class="d-flex">
-          <span class="fs-xl text mx-2">地图数据</span>
-          <dv-decoration-1 class="dv-dec-1" />
+          <span class="fs-xl text mx-2 mt-1">数据统计图</span>
         </div>
       </div>
-      <div class="d-flex jc-center">
+      <div>
         <chart />
       </div>
     </div>
@@ -18,35 +17,28 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
-import Chart from './chart/index'
-export default defineComponent({
+import Chart from "./chart/index";
+export default {
   components: {
     Chart
   }
-})
+}
 </script>
 
 <style lang="scss" scoped>
-.centreLeft1 {
-  $box-width: 300px;
-  $box-height: 410px;
-  padding: 16px;
+$box-height: 520px;
+$box-width: 100%;
+.bottomLeft {
+  padding: 25px 16px;
   height: $box-height;
-  min-width: $box-width;
+  width: $box-width;
   border-radius: 5px;
   .bg-color-black {
-    height: $box-height - 30px;
+    height: $box-height - 40px;
     border-radius: 10px;
   }
   .text {
     color: #c3cbde;
-  }
-  .dv-dec-1 {
-    position: relative;
-    width: 100px;
-    height: 20px;
-    top: -3px;
   }
   .chart-box {
     margin-top: 16px;

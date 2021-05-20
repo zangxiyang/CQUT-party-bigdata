@@ -53,6 +53,7 @@ export default defineComponent({
     watch(
       () => props.options,
       val => {
+        console.log(val);
         val && initChart()
       },
       {

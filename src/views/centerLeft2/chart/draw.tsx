@@ -4,7 +4,7 @@ import { defineComponent, watch, shallowReactive, nextTick, ref, onUnmounted } f
 const PropsType = {
   cdata: {
     type: Array,
-    default: () => [],
+    require: true
   }
 } as const
 

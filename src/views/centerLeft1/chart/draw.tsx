@@ -4,10 +4,7 @@ import { defineComponent, watch, shallowReactive } from 'vue'
 const PropsType = {
   cdata: {
     type: Object,
-    default: () => ({
-      xData: [],
-      seriesData: []
-    })
+    require: true
   }
 } as const
 

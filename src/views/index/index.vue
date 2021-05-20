@@ -80,10 +80,10 @@
           <!-- 第四行数据 -->
           <div class="bototm-box">
             <dv-border-box-13>
-              <!-- <bottomLeft /> -->
+              <bottom-left />
             </dv-border-box-13>
             <dv-border-box-12>
-              <!-- <bottomRight /> -->
+              <bottom-right />
             </dv-border-box-12>
           </div>
         </div>
@@ -100,9 +100,11 @@ import useIndex from '@/utils/useDraw'
 import { title, subtitle, moduleInfo } from '@/constant/index'
 import CenterLeft1 from "../centerLeft1/index.vue";
 import CenterLeft2 from "../centerLeft2/index.vue";
+import Center from "../center/index.vue";
 import CenterRight1 from "../centerRight1/index.vue";
 import CenterRight2 from "../centerRight2/index.vue";
-import Center from "../center/index.vue";
+import BottomLeft from "../bottomLeft/index.vue";
+import BottomRight from "../bottomRight/index.vue";
 
 export default defineComponent({
   components: {
@@ -110,7 +112,9 @@ export default defineComponent({
     CenterLeft2,
     Center,
     CenterRight1,
-    CenterRight2
+    CenterRight2,
+    BottomLeft,
+    BottomRight
   },
   setup() {
     // * 加载标识
