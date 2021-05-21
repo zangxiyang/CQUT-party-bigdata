@@ -20,7 +20,8 @@ const PropsType = {
   },
   options: {
     type: Object,
-    default: () => ({})
+    default: () => ({}),
+    require:  true
   }
 } as const
 
@@ -53,7 +54,6 @@ export default defineComponent({
     watch(
       () => props.options,
       val => {
-        console.log(val);
         val && initChart()
       },
       {

@@ -88,7 +88,6 @@ export default defineComponent({
     watch(
       () => props.cdata,
       (val: any) => {
-        console.log('触发');
         options = {
           title: {
             text: "",
@@ -338,7 +337,6 @@ export default defineComponent({
             }
           ]
         }
-        options = JSON.parse(JSON.stringify(options))
       },
       {
         immediate: true,

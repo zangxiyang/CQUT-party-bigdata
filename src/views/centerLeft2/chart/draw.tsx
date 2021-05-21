@@ -169,16 +169,17 @@ export default defineComponent({
               }
             */
           },
-          visualMap: {
-            min: 0,
-            max: 10,
-            show: false,
-            seriesIndex: 0,
-            // 颜色
-            inRange: {
-              color: ['rgba(41,166,206, .5)', 'rgba(69,117,245, .9)'],
-            },
-          },
+          // 如果需要根据不同的数据展示深浅不一的颜色，则把这里打开
+          // visualMap: {
+          //   min: 0,
+          //   max: 10,
+          //   show: false,
+          //   seriesIndex: 0,
+          //   颜色
+          //   inRange: {
+          //     color: ['rgba(41,166,206, .5)', 'rgba(69,117,245, .9)'],
+          //   },
+          // },
           // 底部背景
           geo: {
             show: true,
@@ -190,14 +191,14 @@ export default defineComponent({
             roam: false,
             itemStyle: {
               normal: {
-                areaColor: 'rgba(0,0,0,0)',
-                shadowColor: 'rgba(7,114,204, .8)',
-                shadowOffsetX: 5,
-                shadowOffsetY: 5,
+                borderColor: 'rgba(192,245,249,.8)',
+                borderWidth: 1,
+                shadowColor: '#6FFDFF',
+                shadowOffsetY: 0,
+                shadowBlur: 10,
+                areaColor: 'rgba(29,85,139,.6)',
               },
-              emphasis: {
-                areaColor: '#00aeef',
-              },
+
             },
           },
           series: [
@@ -205,18 +206,30 @@ export default defineComponent({
               name: '相关指数',
               type: 'map',
               aspectScale: 0.85, //长宽比
-              zoom: 1.2,
+              zoom: 1.2, //缩放
               mapType: '福建', // 自定义扩展图表类型
               top: '10%',
               left: '16%',
               itemStyle: {
                 normal: {
-                  color: 'red',
-                  areaColor: 'rgba(19,54,162, .5)',
-                  borderColor: 'rgba(0,242,252,.3)',
+                  // 背景渐变色
+                  areaColor: {
+                    type: 'linear-gradient',
+                    x: 0,
+                    y: 300,
+                    x2: 0,
+                    y2: 0,
+                    colorStops: [{
+                      offset: 0,
+                      color: 'RGBA(19,96,187,1)' // 0% 处的颜色
+                    }, {
+                      offset: 1,
+                      color: 'RGBA(7,193,223,1)' // 50% 处的颜色
+                    }],
+                    global: true // 缺省为 false
+                  },
+                  borderColor: '#4ECEE6',
                   borderWidth: 1,
-                  shadowBlur: 7,
-                  shadowColor: '#00f2fc',
                 },
                 emphasis: {
                   areaColor: '#4f7fff',
