@@ -12,12 +12,6 @@ const PropsType = {
 export default defineComponent({
   props: PropsType,
   setup(props) {
-    // 定时器
-    // let intervalId = 0
-    // 地图选择
-    // let preSelectMapIndex = 0
-    // ref
-    const chartRef = ref()
     // 配置项
     let options = shallowReactive({})
     // 设置点的位置(经纬度)
@@ -74,78 +68,6 @@ export default defineComponent({
       }
       return scatterData;
     }
-    // 重新随机选中地图区域
-    // const reSelectMapRandomArea = () => {
-    //   const length = 9;
-    //   nextTick(() => {
-    //     const map = chartRef.value;
-    //     let index = Math.floor(Math.random() * length);
-    //     while (index === preSelectMapIndex || index >= length) {
-    //       index = Math.floor(Math.random() * length);
-    //     }
-    //     if (map.dispatchAction) {
-    //       map.dispatchAction({
-    //         type: 'mapUnSelect',
-    //         seriesIndex: 0,
-    //         dataIndex: preSelectMapIndex,
-    //       });
-    //       map.dispatchAction({
-    //         type: 'showTip',
-    //         seriesIndex: 0,
-    //         dataIndex: index,
-    //       });
-    //       map.dispatchAction({
-    //         type: 'mapSelect',
-    //         seriesIndex: 0,
-    //         dataIndex: index,
-    //       });
-    //       preSelectMapIndex = index;
-    //     }
-    //   });
-    // }
-    // const handleMapRandomSelect = () => {
-    //   nextTick(() => {
-    //     const map = chartRef.value;
-    //     setTimeout(() => {
-    //       reSelectMapRandomArea();
-    //     }, 0);
-    //     // 移入区域，清除定时器、取消之前选中并选中当前
-    //     if (map.on) {
-    //       map.on('mouseover', function (params) {
-    //         clearInterval(intervalId);
-    //         if (map.dispatchAction) {
-    //           map.dispatchAction({
-    //             type: 'mapUnSelect',
-    //             seriesIndex: 0,
-    //             dataIndex: preSelectMapIndex,
-    //           });
-    //           map.dispatchAction({
-    //             type: 'mapSelect',
-    //             seriesIndex: 0,
-    //             dataIndex: params.dataIndex,
-    //           });
-    //           preSelectMapIndex = params.dataIndex;
-    //         }
-    //       });
-    //     }
-    //     // 移出区域重新随机选中地图区域，并开启定时器
-    //     if (map.on) {
-    //       map.on('globalout', function () {
-    //         reSelectMapRandomArea();
-    //         startInterval();
-    //       });
-    //       startInterval();
-    //     }
-    //   });
-    // }
-    // 开启定时器
-    // const startInterval = () => {
-    //   // 应通过接口获取配置时间，暂时写死5s
-    //   const time = 2000;
-    //   intervalId = setInterval(() => {
-    //     reSelectMapRandomArea();
-    //   }, time);
-    // }
     // 监听
     watch(
       () => props.cdata,
@@ -175,7 +97,7 @@ export default defineComponent({
           //   max: 10,
           //   show: false,
           //   seriesIndex: 0,
-          //   颜色
+          //   // 颜色
           //   inRange: {
           //     color: ['rgba(41,166,206, .5)', 'rgba(69,117,245, .9)'],
           //   },
@@ -276,25 +198,18 @@ export default defineComponent({
             },
           ],
         }
-        // 重新选择区域
-        // handleMapRandomSelect();
       },
       {
         immediate: true,
         deep: true
       }
     )
-
-    // 销毁
-    // onUnmounted(() => {
-    //   clearInterval(intervalId)
-    // })
     return () => {
       const height = "360px"
       const width = "330px"
 
       return <div>
-        <echart ref={chartRef} options={options} height={height} width={width} />
+        <echart options={options} height={height} width={width} />
       </div>
     }
   }

@@ -1,4 +1,4 @@
-import { defineComponent, onMounted, ref, watch, onBeforeUnmount } from 'vue'
+import { defineComponent, onMounted, ref, watch, onBeforeUnmount, useContext } from 'vue'
 import '@/common/echart/map/fujian.js'
 import theme from '@/common/echart/style/theme.js' // 引入默认主题
 import * as echarts from 'echarts'
@@ -26,12 +26,6 @@ const PropsType = {
   options: {
     type: Object,
     default: () => ({}),
-    require: true
-  },
-  // 手动触发更新标识，建议从 0 开始
-  updateFlag: {
-    type: Number,
-    default: 0,
   }
 } as const
 
@@ -41,10 +35,13 @@ export default defineComponent({
   setup(props) {
     const chartRef = ref<HTMLElement>()
     const chart = ref<any>()
-
+    // 暴露接口
+    const { expose } = useContext();
     // 初始化echart
-    const initChart = () => {
-      chart.value.setOption(props.options)
+    const initChart = (data?: any) => {
+      if (data || props.options) {
+        chart.value.setOption(data || props.options)
+      }
     }
 
     // 生命周期
@@ -54,7 +51,6 @@ export default defineComponent({
       chart.value = echarts.init(chartRef.value, 'myTheme')
       initChart()
     })
-
     onBeforeUnmount(() => {
       chart.value.dispose()
       chart.value = null
@@ -64,17 +60,18 @@ export default defineComponent({
     watch(
       () => props.options,
       val => {
-        val && initChart()
+        val && initChart(val)
       },
       {
         deep: true
       }
     )
 
-    // 手动触发图表渲染
-    watch(() => props.updateFlag, () => {
-      initChart()
-    })
+    // 对外暴露接口
+    expose({
+      chartRef,
+      initChart
+    });
 
     return () => {
       const { id, className, height, width } = props

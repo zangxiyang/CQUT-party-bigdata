@@ -1,4 +1,4 @@
-import { defineComponent, watch, reactive, ref } from 'vue';
+import { defineComponent, watch, ref } from 'vue';
 // 声明类型
 const PropsType = {
   cdata: {
@@ -11,7 +11,8 @@ const PropsType = {
 export default defineComponent({
   props: PropsType,
   setup(props) {
-    const updateFlag = ref(0)
+    // 定义 ref
+    const chartRef = ref()
     // 定义颜色
     const colorList = {
       linearYtoG: {
@@ -84,8 +85,9 @@ export default defineComponent({
       }
     }
     // 配置项
-    let options = reactive({})
+    let options ={}
 
+    // 监听
     watch(
       () => props.cdata,
       (val: any) => {
@@ -339,7 +341,10 @@ export default defineComponent({
           ]
         }
         // 手动触发更新
-        updateFlag.value += 1
+        if (chartRef.value) {
+          // 通过初始化参数打入数据
+          chartRef.value.initChart(options)
+        }
       },
       {
         immediate: true,
@@ -352,7 +357,7 @@ export default defineComponent({
       const width = "100%"
 
       return <div>
-        <echart options={options} height={height} width={width} updateFlag={updateFlag.value} />
+        <echart ref={chartRef} height={height} width={width} />
       </div>
     }
   }

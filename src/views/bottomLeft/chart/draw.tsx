@@ -1,4 +1,4 @@
-import { defineComponent, watch, shallowReactive } from 'vue'
+import { defineComponent, watch, ref } from 'vue'
 import * as echarts from 'echarts'
 // 声明类型
 const PropsType = {
@@ -12,9 +12,12 @@ const PropsType = {
 export default defineComponent({
   props: PropsType,
   setup(props) {
+    // 定义 ref
+    const chartRef = ref()
     // 配置项
-    let options = shallowReactive({})
+    let options = {}
 
+    // 监听
     watch(
       () => props.cdata,
       (val: any) => {
@@ -131,6 +134,11 @@ export default defineComponent({
             }
           ]
         }
+        // 手动触发更新
+        if (chartRef.value) {
+          // 通过初始化参数打入数据
+          chartRef.value.initChart(options)
+        }
       },
       {
         immediate: true,
@@ -143,7 +151,7 @@ export default defineComponent({
       const width = "100%"
 
       return <div>
-        <echart options={options} height={height} width={width} />
+        <echart ref={chartRef} height={height} width={width} />
       </div>
     }
   }

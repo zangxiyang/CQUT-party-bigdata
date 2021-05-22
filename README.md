@@ -54,8 +54,8 @@
 |参数名称              | 类型      | 作用/功能                      |
 | -------------------| --------- | ------------------------------|
 | id                 | String    | 唯一 id（非必填，使用 ref 指定节点）|
-| className          | String    | class样式名称（非必填）                 |
-| options            | Object    | ECharts 配置（必填）                   |
+| className          | String    | class样式名称（非必填）            |
+| options            | Object    | ECharts 配置（非必填），可通过初始化参数打入（大数据场景可使用）|
 | height             | String    | 图表高度（必填）                    |
 | width              | String    | 图表宽度（必填）                    |
 
