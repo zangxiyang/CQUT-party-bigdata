@@ -37,10 +37,15 @@ export default defineComponent({
     const chart = ref<any>()
     // 暴露接口
     const { expose } = useContext();
-    // 初始化echart
-    const initChart = (data?: any) => {
+    
+    /**
+     * 初始化echart
+     * @param data 数据项
+     * @param clearCaching 是否清除缓存
+     */
+    const initChart = (data?: any, clearCaching = false) => {
       if (data || props.options) {
-        chart.value.setOption(data || props.options)
+        chart.value.setOption(data || props.options, clearCaching)
       }
     }
 

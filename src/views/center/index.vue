@@ -24,7 +24,6 @@
         <div class="item bg-color-black">
           <span>今日任务通过率</span>
           <chart
-            :id="rate[0].id"
             :tips="rate[0].tips"
             :colorObj="rate[0].colorData"
           />
@@ -32,7 +31,6 @@
         <div class="item bg-color-black">
           <span>今日任务达标率</span>
           <chart
-            :id="rate[1].id"
             :tips="rate[1].tips"
             :colorObj="rate[1].colorData"
           />

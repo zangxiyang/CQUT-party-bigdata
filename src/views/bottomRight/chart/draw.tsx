@@ -174,8 +174,8 @@ export default defineComponent({
           grid: {
             left: 90,
             right: 80,
-            bottom: 40,
-            top: "60%"
+            bottom: '15%',
+            top: "50%"
           },
           xAxis: {
             type: "category",
