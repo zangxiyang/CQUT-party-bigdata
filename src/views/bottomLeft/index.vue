@@ -17,24 +17,25 @@
 </template>
 
 <script>
+import { defineComponent } from 'vue'
 import Chart from "./chart/index";
-export default {
+export default defineComponent({
   components: {
     Chart
   }
-}
+})
 </script>
 
 <style lang="scss" scoped>
 $box-height: 520px;
 $box-width: 100%;
 .bottomLeft {
-  padding: 25px 16px;
+  padding: 20px 16px;
   height: $box-height;
   width: $box-width;
   border-radius: 5px;
   .bg-color-black {
-    height: $box-height - 40px;
+    height: $box-height - 35px;
     border-radius: 10px;
   }
   .text {

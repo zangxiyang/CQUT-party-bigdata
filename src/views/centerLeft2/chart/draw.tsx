@@ -181,34 +181,31 @@ export default defineComponent({
           //   },
           // },
           // 底部背景
-          geo: {
+          geo: [{
             show: true,
             aspectScale: 0.85, //长宽比
-            zoom: 1.2,
+            zoom: 1.16,
             top: '10%',
-            left: '16%',
+            left: '17%',
             map: '福建',
             roam: false,
             itemStyle: {
               normal: {
-                borderColor: 'rgba(192,245,249,.8)',
-                borderWidth: 1,
-                shadowColor: '#6FFDFF',
-                shadowOffsetY: 0,
-                shadowBlur: 10,
-                areaColor: 'rgba(29,85,139,.6)',
-              },
-
-            },
-          },
+                borderColor: '#7ad5ff7f',
+                shadowOffsetY: 5,
+                shadowBlur: 15,
+                areaColor: 'rgba(5,21,35,0.1)'
+              }
+            }
+          }],
           series: [
             {
               name: '相关指数',
               type: 'map',
               aspectScale: 0.85, //长宽比
-              zoom: 1.2, //缩放
+              zoom: 1.16, //缩放
               mapType: '福建', // 自定义扩展图表类型
-              top: '10%',
+              top: '9%',
               left: '16%',
               itemStyle: {
                 normal: {

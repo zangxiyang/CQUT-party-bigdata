@@ -20,6 +20,7 @@ export default defineComponent({
       (val: any) => {
         options = {
           tooltip: {
+            show: true,
             trigger: "axis",
             backgroundColor: "rgba(255,255,255,0.1)",
             axisPointer: {
@@ -40,8 +41,8 @@ export default defineComponent({
           grid: {
             x: "8%",
             width: "88%",
-            y: "2%",
-            bottom: '8%'
+            top: "5%",
+            bottom: '7%'
           },
           xAxis: {
             data: val.category,

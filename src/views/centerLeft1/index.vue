@@ -15,10 +15,14 @@
       </div>
       <!-- 4个主要的数据 -->
       <div class="bottom-data">
-        <div class="item-box" v-for="(item, index) in numberData" :key="index">
+        <div
+          class="item-box mt-2"
+          v-for="(item, index) in numberData"
+          :key="index"
+        >
           <div class="d-flex jc-end">
-            <span class="coin">￥</span>
-            <dv-digital-flop class="dv-digital-flop" :config="item.number" />
+            <i class="iconfont" :class="[iconFont[index]]" />
+            <dv-digital-flop class="dv-digital-flop" :config="item.config" />
           </div>
           <p>
             <span> {{ item.text }} </span>
@@ -35,48 +39,57 @@ import { defineComponent, onMounted, reactive } from 'vue'
 import Chart from './chart/index'
 export default defineComponent({
   components: {
-    Chart,
+    Chart
   },
   setup() {
     // 下层数据
-    const numberData = reactive([
+    const dataArr = [
       {
-        number: {
-          number: [15],
-          toFixed: 1,
-          content: '{nt}'
-        },
+        number: 150,
         text: '今日构建总量'
       },
       {
-        number: {
-          number: [144],
-          toFixed: 1,
-          content: '{nt}'
-        },
+        number: 144,
         text: '总共完成数量'
       },
       {
-        number: {
-          number: [361],
-          toFixed: 1,
-          content: '{nt}'
-        },
+        number: 361,
         text: '正在编译数量'
       },
       {
-        number: {
-          number: [157],
-          toFixed: 1,
-          content: '{nt}'
-        },
+        number: 571,
         text: '未通过数量'
       }
-    ])
+    ]
+    // 对应图标
+    const iconFont = [
+      'icon-diagnose',
+      'icon-monitoring',
+      'icon-cloudupload',
+      'icon-clouddownload'
+    ]
+    const numberData = reactive([])
 
-    onMounted(()=>{
+    onMounted(() => {
+      setData()
       changeTiming()
     })
+
+    const setData = () => {
+      dataArr.forEach(e => {
+        numberData.push({
+          config: {
+            number: [e.number],
+            toFixed: 1,
+            content: '{nt}',
+            style: {
+              fontSize: 24
+            }
+          },
+          text: e.text
+        })
+      })
+    }
 
     const changeTiming = () => {
       setInterval(() => {
@@ -85,11 +98,11 @@ export default defineComponent({
     }
     const changeNumber = () => {
       numberData.forEach((item, index) => {
-        item.number.number[0] += ++index
-        item.number = { ...item.number }
+        item.config.number[0] += ++index
+        item.config = { ...item.config }
       })
     }
-    return { numberData }
+    return { numberData, iconFont}
   }
 })
 </script>
@@ -102,7 +115,7 @@ $box-height: 410px;
   padding: 16px;
   height: $box-height;
   width: $box-width;
-  border-radius: 5px;
+  border-radius: 10px;
   .bg-color-black {
     height: $box-height - 30px;
     border-radius: 10px;
@@ -119,22 +132,22 @@ $box-height: 410px;
 
   .bottom-data {
     .item-box {
-      &>div{
-        padding-right: 10px;
+      & > div {
+        padding-right: 5px;
       }
+      font-size: 14px;
       float: right;
       position: relative;
       width: 50%;
       color: #d3d6dd;
       .dv-digital-flop {
-        width: 80px;
-        height: 40px;
+        width: 120px;
+        height: 30px;
       }
-      // 金币
-      .coin {
+      i {
         font-size: 20px;
-        color: #ffc107;
-        line-height: 40px;
+        line-height: 30px;
+        margin-left: 20px;
       }
       .colorYellow {
         color: yellowgreen;

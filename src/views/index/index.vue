@@ -32,7 +32,7 @@
               <span class="text">{{subtitle[0]}}</span>
             </div>
             <div class="react-left ml-3" >
-              <span class="text colorBlue">{{subtitle[1]}}</span>
+              <span class="text">{{subtitle[1]}}</span>
             </div>
           </div>
           <div class="d-flex aside-width">

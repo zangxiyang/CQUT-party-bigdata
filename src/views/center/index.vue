@@ -8,7 +8,7 @@
       >
         <p class="ml-3 colorBlue fw-b">{{ item.title }}</p>
         <div>
-          <dv-digital-flop class="dv-dig-flop ml-1" :config="item.number" />
+          <dv-digital-flop class="dv-dig-flop ml-1 mt-1 pl-3" :config="item.config" />
         </div>
       </div>
     </div>
@@ -23,7 +23,7 @@
       <div class="percent">
         <div class="item bg-color-black">
           <span>今日任务通过率</span>
-          <CenterChart
+          <chart
             :id="rate[0].id"
             :tips="rate[0].tips"
             :colorObj="rate[0].colorData"
@@ -31,7 +31,7 @@
         </div>
         <div class="item bg-color-black">
           <span>今日任务达标率</span>
-          <CenterChart
+          <chart
             :id="rate[1].id"
             :tips="rate[1].tips"
             :colorObj="rate[1].colorData"
@@ -46,150 +46,158 @@
 </template>
 
 <script>
-import CenterChart from '../center/chart/draw'
+import { defineComponent, reactive, onMounted } from 'vue'
+import Chart from '../center/chart/draw'
 
-export default {
+export default defineComponent({
   components: {
-    CenterChart
+    Chart
   },
-  data() {
-    return {
-      titleItem: [
+  setup() {
+    // 下层数据
+    const titleDate = [
+      {
+        number: 1020,
+        text: '今年累计任务建次数'
+      },
+      {
+        number: 18,
+        text: '本月累计任务次数'
+      },
+      {
+        number: 4,
+        text: '今日累计任务次数'
+      },
+      {
+        number: 71,
+        text: '今年失败任务次数'
+      },
+      {
+        number: 949,
+        text: '今年失败成功次数'
+      },
+      {
+        number: 811,
+        text: '今年达标任务个数'
+      },
+    ]
+    const titleItem = reactive([])
+
+    // 初始化数据
+    onMounted(() => {
+      setData()
+    })
+
+    const ranking = reactive({
+      data: [
         {
-          title: '今年累计任务建次数',
-          number: {
-            number: [120],
-            toFixed: 1,
-            content: '{nt}'
-          }
+          name: '周口',
+          value: 55
         },
         {
-          title: '本月累计任务次数',
-          number: {
-            number: [18],
-            toFixed: 1,
-            content: '{nt}'
-          }
+          name: '南阳',
+          value: 120
         },
         {
-          title: '今日累计任务次数',
-          number: {
-            number: [2],
-            toFixed: 1,
-            content: '{nt}'
-          }
+          name: '西峡',
+          value: 78
         },
         {
-          title: '今年失败任务次数',
-          number: {
-            number: [14],
-            toFixed: 1,
-            content: '{nt}'
-          }
+          name: '驻马店',
+          value: 66
         },
         {
-          title: '今年成功任务次数',
-          number: {
-            number: [106],
-            toFixed: 1,
-            content: '{nt}'
-          }
+          name: '新乡',
+          value: 80
         },
         {
-          title: '今年达标任务个数',
-          number: {
-            number: [100],
-            toFixed: 1,
-            content: '{nt}'
-          }
+          name: '新乡2',
+          value: 80
+        },
+        {
+          name: '新乡3',
+          value: 80
+        },
+        {
+          name: '新乡4',
+          value: 80
+        },
+        {
+          name: '新乡5',
+          value: 80
+        },
+        {
+          name: '新乡6',
+          value: 80
         }
       ],
-      ranking: {
-        data: [
-          {
-            name: '周口',
-            value: 55
-          },
-          {
-            name: '南阳',
-            value: 120
-          },
-          {
-            name: '西峡',
-            value: 78
-          },
-          {
-            name: '驻马店',
-            value: 66
-          },
-          {
-            name: '新乡',
-            value: 80
-          },
-          {
-            name: '新乡2',
-            value: 80
-          },
-          {
-            name: '新乡3',
-            value: 80
-          },
-          {
-            name: '新乡4',
-            value: 80
-          },
-          {
-            name: '新乡5',
-            value: 80
-          },
-          {
-            name: '新乡6',
-            value: 80
-          }
-        ],
-        carousel: 'single',
-        unit: '人'
-      },
-      water: {
-        data: [24, 45],
-        shape: 'roundRect',
-        formatter: '{value}%',
-        waveNum: 3
-      },
-      // 通过率和达标率的组件复用数据
-      rate: [
-        {
-          id: 'centerRate1',
-          tips: 60,
-          colorData: {
-            textStyle: '#3fc0fb',
-            series: {
-              color: ['#00bcd44a', 'transparent'],
-              dataColor: {
-                normal: '#03a9f4',
-                shadowColor: '#97e2f5'
-              }
-            }
-          }
-        },
-        {
-          id: 'centerRate2',
-          tips: 40,
-          colorData: {
-            textStyle: '#67e0e3',
-            series: {
-              color: ['#faf3a378', 'transparent'],
-              dataColor: {
-                normal: '#ff9800',
-                shadowColor: '#fcebad'
-              }
+      carousel: 'single',
+      unit: '人'
+    })
+
+    const water = reactive({
+      data: [24, 45],
+      shape: 'roundRect',
+      formatter: '{value}%',
+      waveNum: 3
+    })
+
+    const rate = reactive([
+      {
+        id: 'centerRate1',
+        tips: 60,
+        colorData: {
+          textStyle: '#3fc0fb',
+          series: {
+            color: ['#00bcd44a', 'transparent'],
+            dataColor: {
+              normal: '#03a9f4',
+              shadowColor: '#97e2f5'
             }
           }
         }
-      ]
+      },
+      {
+        id: 'centerRate2',
+        tips: 40,
+        colorData: {
+          textStyle: '#67e0e3',
+          series: {
+            color: ['#faf3a378', 'transparent'],
+            dataColor: {
+              normal: '#ff9800',
+              shadowColor: '#fcebad'
+            }
+          }
+        }
+      }
+    ])
+
+    // 设置数据
+    const setData = () => {
+      titleDate.map(e => {
+        titleItem.push({
+          title: e.text,
+          config: {
+            number: [e.number],
+            toFixed: 1,
+            textAlign: 'left',
+            content: '{nt}',
+            style: {
+              fontSize: 26
+            }
+          }
+        })
+      })
+    }
+    return {
+      titleItem,
+      ranking,
+      water,
+      rate
     }
   }
-}
+})
 </script>
 
 <style lang="scss" scoped>
@@ -203,13 +211,13 @@ export default {
     justify-content: space-around;
     .item {
       border-radius: 6px;
-      padding-top: 16px;
+      padding-top: 8px;
       margin-top: 8px;
       width: 32%;
       height: 70px;
       .dv-dig-flop {
-        width: 80px;
-        height: 40px;
+        width: 150px;
+        height: 30px;
       }
     }
   }

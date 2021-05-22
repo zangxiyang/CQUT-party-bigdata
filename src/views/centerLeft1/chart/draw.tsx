@@ -51,7 +51,7 @@ export default defineComponent({
             {
               name: '通过率统计',
               type: 'pie',
-              radius: [10, 55],
+              radius: [10, 50],
               roseType: 'area',
               center: ['50%', '40%'],
               itemStyle: {

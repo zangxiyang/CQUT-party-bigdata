@@ -16,41 +16,42 @@
 </template>
 
 <script>
+import { defineComponent, reactive } from 'vue'
 import Chart from './chart/index.tsx'
 
-export default {
+export default defineComponent({
   components: {
     Chart
   },
-  data() {
-    return {
-      config: {
-        data: [
-          {
-            name: '南阳',
-            value: 167
-          },
-          {
-            name: '周口',
-            value: 67
-          },
-          {
-            name: '漯河',
-            value: 123
-          },
-          {
-            name: '郑州',
-            value: 55
-          },
-          {
-            name: '西峡',
-            value: 98
-          }
-        ]
-      }
-    }
+  setup() {
+    const config = reactive({
+      data: [
+        {
+          name: '南阳',
+          value: 167
+        },
+        {
+          name: '周口',
+          value: 67
+        },
+        {
+          name: '漯河',
+          value: 123
+        },
+        {
+          name: '郑州',
+          value: 55
+        },
+        {
+          name: '西峡',
+          value: 98
+        }
+      ]
+    })
+
+    return { config }
   }
-}
+})
 </script>
 
 <style lang="scss" scoped>
