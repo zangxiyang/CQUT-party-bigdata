@@ -1,4 +1,4 @@
-import { defineComponent, watch, reactive } from 'vue'
+import { defineComponent, watch, reactive, ref } from 'vue';
 // 声明类型
 const PropsType = {
   cdata: {
@@ -11,6 +11,7 @@ const PropsType = {
 export default defineComponent({
   props: PropsType,
   setup(props) {
+    const updateFlag = ref(0)
     // 定义颜色
     const colorList = {
       linearYtoG: {
@@ -337,6 +338,8 @@ export default defineComponent({
             }
           ]
         }
+        // 手动触发更新
+        updateFlag.value += 1
       },
       {
         immediate: true,
@@ -349,7 +352,7 @@ export default defineComponent({
       const width = "100%"
 
       return <div>
-        <echart options={options} height={height} width={width} />
+        <echart options={options} height={height} width={width} updateFlag={updateFlag.value} />
       </div>
     }
   }

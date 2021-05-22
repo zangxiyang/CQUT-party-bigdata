@@ -5,23 +5,33 @@ import * as echarts from 'echarts'
 
 // 定义类型
 const PropsType = {
+  // 图表唯一 id
   id: String,
+  // 图表类名
   className: {
     type: String,
     default: 'chart'
   },
+  // 图表宽度
   width: {
     type: String,
     require: true
   },
+  // 图表高度
   height: {
     type: String,
     require: true
   },
+  // 图表数据项
   options: {
     type: Object,
     default: () => ({}),
-    require:  true
+    require: true
+  },
+  // 手动触发更新标识，建议从 0 开始
+  updateFlag: {
+    type: Number,
+    default: 0,
   }
 } as const
 
@@ -34,7 +44,7 @@ export default defineComponent({
 
     // 初始化echart
     const initChart = () => {
-      chart.value.setOption(props.options, true)
+      chart.value.setOption(props.options)
     }
 
     // 生命周期
@@ -60,6 +70,11 @@ export default defineComponent({
         deep: true
       }
     )
+
+    // 手动触发图表渲染
+    watch(() => props.updateFlag, () => {
+      initChart()
+    })
 
     return () => {
       const { id, className, height, width } = props

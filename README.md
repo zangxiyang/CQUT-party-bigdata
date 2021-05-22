@@ -1,8 +1,9 @@
 ## 一、项目描述
 
+- 这里一个基于 Vue3、TypeScript、DataV、ECharts 框架的 " **数据大屏项目** "，使用 '.vue' 和 '.tsx' 文件实现界面，采用新版动态屏幕适配方案，支持数据动态刷新渲染、内部DataV、ECharts图表都支持自由替换。组件详情请点击下方 ECharts 和 DataV 文档。
+
 - [**Vue2 版本请点击这里查看**](https://gitee.com/MTrun/big-screen-vue-datav)
 - [**React 版本请点击这里查看，全新界面超级好看！！！(o ﾟ v ﾟ)ノ**](https://gitee.com/MTrun/react-big-screen)
-- 这里一个基于 Vue3、TypeScript、DataV、ECharts 框架的 " **数据大屏项目** "，使用 '.vue' 和 '.tsx' 文件实现界面，支持数据动态刷新渲染、内部DataV、ECharts图表都支持自由替换。组件详情请点击下方 ECharts 和 DataV 文档。
 - 项目按照 1920*1080 比例设计，支持任何尺寸的同比例缩放。
 - 项目封装的 ECharts 区域使用了全部引入的方式，增加了打包体积，在实际运用中请使用 **按需引入**。
 - 拉取项目之后，建议按照自己的功能区域重命名文件，现以简单的位置进行区分。
