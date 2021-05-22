@@ -24,14 +24,12 @@ export default function useIndex() {
         // 表示更宽
         scale.width = ((window.innerHeight * baseProportion) / baseWidth).toFixed(5)
         scale.height = (window.innerHeight / baseHeight).toFixed(5)
-        // appRef.value.style.transform = `scale(${scale.width}, ${scale.height} translate(-50%, -50%)`
-        appRef.value.style.transform = `scale(${scale.width}, ${scale.height}`
+        appRef.value.style.transform = `scale(${scale.width}, ${scale.height}) translate(-50%, -50%)`
       } else {
         // 表示更高
         scale.height = ((window.innerWidth / baseProportion) / baseHeight).toFixed(5)
         scale.width = (window.innerWidth / baseWidth).toFixed(5)
-        // appRef.value.style.transform = `scale(${scale.width}, ${scale.height}) translate(-50%, -50%)`
-        appRef.value.style.transform = `scale(${scale.width}, ${scale.height})`
+        appRef.value.style.transform = `scale(${scale.width}, ${scale.height}) translate(-50%, -50%)`
       }
     }
   }

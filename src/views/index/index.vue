@@ -29,15 +29,15 @@
           <div class="d-flex aside-width">
             <div class="react-left ml-4 react-l-s">
               <span class="react-before"></span>
-              <span class="text">{{subtitle[0]}}</span>
+              <span class="text">{{ subtitle[0] }}</span>
             </div>
-            <div class="react-left ml-3" >
-              <span class="text">{{subtitle[1]}}</span>
+            <div class="react-left ml-3">
+              <span class="text">{{ subtitle[1] }}</span>
             </div>
           </div>
           <div class="d-flex aside-width">
             <div class="react-right bg-color-blue mr-3">
-              <span class="text fw-b">{{subtitle[2]}}</span>
+              <span class="text fw-b">{{ subtitle[2] }}</span>
             </div>
             <div class="react-right mr-4 react-l-s">
               <span class="react-after"></span>
@@ -93,18 +93,24 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, reactive, onMounted, onBeforeUnmount } from 'vue'
+import {
+  defineComponent,
+  ref,
+  reactive,
+  onMounted,
+  onBeforeUnmount,
+} from 'vue'
 import { formatTime } from '@/utils/index'
 import { WEEK } from '@/constant/index'
 import useIndex from '@/utils/useDraw'
 import { title, subtitle, moduleInfo } from '@/constant/index'
-import CenterLeft1 from "../centerLeft1/index.vue";
-import CenterLeft2 from "../centerLeft2/index.vue";
-import Center from "../center/index.vue";
-import CenterRight1 from "../centerRight1/index.vue";
-import CenterRight2 from "../centerRight2/index.vue";
-import BottomLeft from "../bottomLeft/index.vue";
-import BottomRight from "../bottomRight/index.vue";
+import CenterLeft1 from '../centerLeft1/index.vue'
+import CenterLeft2 from '../centerLeft2/index.vue'
+import Center from '../center/index.vue'
+import CenterRight1 from '../centerRight1/index.vue'
+import CenterRight2 from '../centerRight2/index.vue'
+import BottomLeft from '../bottomLeft/index.vue'
+import BottomRight from '../bottomRight/index.vue'
 
 export default defineComponent({
   components: {
@@ -124,7 +130,7 @@ export default defineComponent({
       setInterval: 0,
       dateDay: '',
       dateYear: '',
-      dateWeek: '',
+      dateWeek: ''
     })
     // * 适配处理
     const { appRef, calcRate, windowDraw } = useIndex()
@@ -160,8 +166,15 @@ export default defineComponent({
     }
 
     // return
-    return { loading, timeInfo, appRef, title, subtitle, moduleInfo }
-  },
+    return {
+      loading,
+      timeInfo,
+      appRef,
+      title,
+      subtitle,
+      moduleInfo
+    }
+  }
 })
 </script>
 
