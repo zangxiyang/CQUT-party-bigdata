@@ -1,6 +1,6 @@
 import { defineComponent, onMounted, ref, watch, onBeforeUnmount } from 'vue'
-import '@/common/map/fujian'
-import theme from '@/common/map/theme' // 引入默认主题
+import '@/common/echart/map/fujian.js'
+import theme from '@/common/echart/style/theme.js' // 引入默认主题
 import * as echarts from 'echarts'
 
 // 定义类型
