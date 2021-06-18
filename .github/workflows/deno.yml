@@ -39,7 +39,7 @@ jobs:
       - run: |
           echo "替换node_modules出错文件"
           rm -rf node_modules/@jiaminghi
-          unzip -d node_modules/@jiaminghi other_modules/@jiaminghi.zip
+          cp -r other_modules/@jiaminghi/ node_modules/@jiaminghi
           echo "替换出错文件成功,开始构建"
           npm run build
       - run: echo '构建成功....'
