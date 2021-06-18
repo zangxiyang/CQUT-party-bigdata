@@ -23,49 +23,32 @@ jobs:
       # 下载源码
       - name: Checkout
         uses: actions/checkout@master
-      - name: use Node.js 14
-      # 使用action库  actions/setup-node安装node
-        uses: actions/setup-node@v2.1.5
-        with:
-          node-version: 14.x
-          registry-url: https://npm.pkg.github.com
-      - run: pwd
-      - run: |
-          ls
-          rm -rf package-lock.json
-          echo "删除成功"
-      - run: sudo npm cache clean -f
-      - run: npm install
-      - run: |
-          echo "替换node_modules出错文件"
-          rm -rf node_modules/@jiaminghi
-          cp -r other_modules/@jiaminghi/ node_modules/@jiaminghi
-          echo "替换出错文件成功,开始构建"
-          npm run build
-      - run: echo '构建成功....'
       
-    # 第五步：部署到服务器 - 公有仓库可以这样部署
-#       - name: Delete before Version
-#         uses: appleboy/ssh-action@master # 使用ssh链接服务器
-#         with:
-#           host: ${{ secrets.HOST }}
-#           username: ${{ secrets.USERNAME }}
-#           password: ${{ secrets.PASSWORD }}
-#           port: ${{ secrets.PORT }}
-#           script: |
-#             cd /www/wwwroot/party.imsle.com
-#             echo '清空当前版本'
-#             rm -rf *
-#             echo '清空成功'
-#             echo '开始替换最新版本'
-#       - name: Deploy for Private
-#         uses: easingthemes/ssh-deploy@v2.1.5
-#         with:
-#           REMOTE_HOST: ${{ secrets.HOST }}
-#           REMOTE_USER: ${{ secrets.USERNAME }}
-#           REMOTE_PORT: ${{ secrets.PORT }}
-#           TARGET: /www/wwwroot/party.imsle.com
-#           SOURCE: dist/
-#           SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-#           script: |
-#             echo '上传成功'
+      #第五步：部署到服务器 - 公有仓库可以这样部署
+      - name: Delete before Version
+        uses: appleboy/ssh-action@master # 使用ssh链接服务器
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd /www/wwwroot/partydata.imsle.com
+            echo '清空当前版本'
+            rm -rf *
+            echo '清空成功'
+            echo '开始替换最新版本'
+      - name: Deploy for Private
+        uses: easingthemes/ssh-deploy@v2.1.5
+        with:
+          REMOTE_HOST: ${{ secrets.HOST }}
+          REMOTE_USER: ${{ secrets.USERNAME }}
+          REMOTE_PORT: ${{ secrets.PORT }}
+          TARGET: /www/wwwroot/partydata.imsle.com
+          SOURCE: dist.zip
+          SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          script: |
+            echo '上传成功, 开始解压'
+            unzip dist.zip
+            echo '解压成功!'
+            
