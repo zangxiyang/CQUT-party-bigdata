@@ -1,0 +1,66 @@
+# This is a basic workflow to help you get started with Actions
+
+name: VUE3 PARTY SMART CQUT FRONT CI
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    tags: # 当我们提交代码为tag 是以'v'开头的时候才会触发自动部署到服务端 如 git push tag v0.1.0
+      - 'v*'
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build-and-deploy:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # 下载源码
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: use Node.js 14
+      # 使用action库  actions/setup-node安装node
+        uses: actions/setup-node@v2.1.5
+        with:
+          node-version: 14.x
+          registry-url: https://npm.pkg.github.com
+      - run: pwd
+      - run: |
+          ls
+          rm -rf package-lock.json
+          echo "删除成功"
+      - run: sudo npm cache clean -f
+      - run: npm install
+      - run: npm run build
+      - run: echo '构建成功....'
+      
+    # 第五步：部署到服务器 - 公有仓库可以这样部署
+#       - name: Delete before Version
+#         uses: appleboy/ssh-action@master # 使用ssh链接服务器
+#         with:
+#           host: ${{ secrets.HOST }}
+#           username: ${{ secrets.USERNAME }}
+#           password: ${{ secrets.PASSWORD }}
+#           port: ${{ secrets.PORT }}
+#           script: |
+#             cd /www/wwwroot/party.imsle.com
+#             echo '清空当前版本'
+#             rm -rf *
+#             echo '清空成功'
+#             echo '开始替换最新版本'
+#       - name: Deploy for Private
+#         uses: easingthemes/ssh-deploy@v2.1.5
+#         with:
+#           REMOTE_HOST: ${{ secrets.HOST }}
+#           REMOTE_USER: ${{ secrets.USERNAME }}
+#           REMOTE_PORT: ${{ secrets.PORT }}
+#           TARGET: /www/wwwroot/party.imsle.com
+#           SOURCE: dist/
+#           SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+#           script: |
+#             echo '上传成功'
