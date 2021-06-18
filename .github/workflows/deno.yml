@@ -36,7 +36,12 @@ jobs:
           echo "删除成功"
       - run: sudo npm cache clean -f
       - run: npm install
-      - run: npm run build
+      - run: |
+          echo "替换node_modules出错文件"
+          rm -rf node_modules/@jiaminghi
+          unzip -d node_modules/@jiaminghi other_modules/@jiaminghi.zip
+          echo "替换出错文件成功,开始构建"
+          npm run build
       - run: echo '构建成功....'
       
     # 第五步：部署到服务器 - 公有仓库可以这样部署
