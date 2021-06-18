@@ -1,0 +1,76 @@
+{
+  "_from": "@jiaminghi/data-view@^2.7.3",
+  "_id": "@jiaminghi/data-view@2.7.3",
+  "_inBundle": false,
+  "_integrity": "sha512-3dxFJkaGKogUMzAkJBBMOvD9sXGFwHNByyM7IiLBSO8Hb0a5Aa6IQ8cfu+0X2r+irLw2Ty5KDmoarc9GTxfHoQ==",
+  "_location": "/@jiaminghi/data-view",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "@jiaminghi/data-view@^2.7.3",
+    "name": "@jiaminghi/data-view",
+    "escapedName": "@jiaminghi%2fdata-view",
+    "scope": "@jiaminghi",
+    "rawSpec": "^2.7.3",
+    "saveSpec": null,
+    "fetchSpec": "^2.7.3"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@jiaminghi/data-view/-/data-view-2.7.3.tgz",
+  "_shasum": "26b9b263f8307c60d15f5b76474a3446d85704d7",
+  "_spec": "@jiaminghi/data-view@^2.7.3",
+  "_where": "D:\\Desktop\\Desktop\\DW-Webpack\\数据可视化大屏展示\\big-screen-vue-datav",
+  "author": {
+    "name": "JiaMing",
+    "email": "743192023@qq.com"
+  },
+  "bugs": {
+    "url": "https://github.com/DataV-Team/DataV/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "@babel/runtime": "^7.5.5",
+    "@jiaminghi/charts": "*"
+  },
+  "deprecated": false,
+  "description": "Vue Large screen data display component library",
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-transform-runtime": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@jiaminghi/fs": "0.0.1",
+    "ftp": "^0.3.10",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.1.1",
+    "rollup-plugin-vue": "^5.0.1",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "homepage": "https://github.com/DataV-Team/DataV#readme",
+  "keywords": [
+    "vue",
+    "chart",
+    "dataview",
+    "datavisual"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "name": "@jiaminghi/data-view",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DataV-Team/DataV.git"
+  },
+  "scripts": {
+    "build": "node build/index.js",
+    "deploy": "node deploy/index.js",
+    "prepublish": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "2.7.3"
+}

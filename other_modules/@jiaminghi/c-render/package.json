@@ -1,0 +1,76 @@
+{
+  "_from": "@jiaminghi/c-render@*",
+  "_id": "@jiaminghi/c-render@0.4.3",
+  "_inBundle": false,
+  "_integrity": "sha512-FJfzj5hGj7MLqqqI2D7vEzHKbQ1Ynnn7PJKgzsjXaZpJzTqs2Yw5OSeZnm6l7Qj7jyPAP53lFvEQNH4o4j6s+Q==",
+  "_location": "/@jiaminghi/c-render",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "@jiaminghi/c-render@*",
+    "name": "@jiaminghi/c-render",
+    "escapedName": "@jiaminghi%2fc-render",
+    "scope": "@jiaminghi",
+    "rawSpec": "*",
+    "saveSpec": null,
+    "fetchSpec": "*"
+  },
+  "_requiredBy": [
+    "/@jiaminghi/charts"
+  ],
+  "_resolved": "https://registry.npmjs.org/@jiaminghi/c-render/-/c-render-0.4.3.tgz",
+  "_shasum": "982ebd8f71b443bb9507834227834973ebd9b6d8",
+  "_spec": "@jiaminghi/c-render@*",
+  "_where": "D:\\Desktop\\Desktop\\DW-Webpack\\数据可视化大屏展示\\big-screen-vue-datav\\node_modules\\@jiaminghi\\charts",
+  "author": {
+    "name": "JiaMing",
+    "email": "743192023@qq.com"
+  },
+  "bugs": {
+    "url": "https://github.com/jiaming743/CRender/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "@babel/runtime": "^7.5.5",
+    "@jiaminghi/bezier-curve": "*",
+    "@jiaminghi/color": "*",
+    "@jiaminghi/transition": "*"
+  },
+  "deprecated": false,
+  "description": "Canvas-based vector graphics rendering plugin",
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-transform-runtime": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.4.4",
+    "@jiaminghi/fs": "0.0.2",
+    "browserify": "^16.5.0",
+    "chai": "^4.2.0",
+    "ftp": "^0.3.10",
+    "mocha": "^6.1.4",
+    "uglifyjs": "^2.4.11"
+  },
+  "homepage": "https://github.com/jiaming743/CRender#readme",
+  "keywords": [
+    "canvas",
+    "render",
+    "graph",
+    "vector"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "name": "@jiaminghi/c-render",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiaming743/CRender.git"
+  },
+  "scripts": {
+    "build": "node build/index.js",
+    "deploy": "node deploy/index.js",
+    "prepublish": "npm run build",
+    "test": "mocha"
+  },
+  "version": "0.4.3"
+}

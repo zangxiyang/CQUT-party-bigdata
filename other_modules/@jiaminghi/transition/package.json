@@ -1,0 +1,70 @@
+{
+  "_from": "@jiaminghi/transition@*",
+  "_id": "@jiaminghi/transition@1.1.11",
+  "_inBundle": false,
+  "_integrity": "sha512-owBggipoHMikDHHDW5Gc7RZYlVuvxHADiU4bxfjBVkHDAmmck+fCkm46n2JzC3j33hWvP9nSCAeh37t6stgWeg==",
+  "_location": "/@jiaminghi/transition",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "@jiaminghi/transition@*",
+    "name": "@jiaminghi/transition",
+    "escapedName": "@jiaminghi%2ftransition",
+    "scope": "@jiaminghi",
+    "rawSpec": "*",
+    "saveSpec": null,
+    "fetchSpec": "*"
+  },
+  "_requiredBy": [
+    "/@jiaminghi/c-render"
+  ],
+  "_resolved": "https://registry.npmjs.org/@jiaminghi/transition/-/transition-1.1.11.tgz",
+  "_shasum": "576d8af092434b34201eba5eaecc79dd33c8ad8c",
+  "_spec": "@jiaminghi/transition@*",
+  "_where": "D:\\Desktop\\Desktop\\DW-Webpack\\数据可视化大屏展示\\big-screen-vue-datav\\node_modules\\@jiaminghi\\c-render",
+  "author": {
+    "name": "JiaMing",
+    "email": "743192023@qq.com"
+  },
+  "bugs": {
+    "url": "https://github.com/jiaming743/Transition/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "@babel/runtime": "^7.5.5"
+  },
+  "deprecated": false,
+  "description": "Dynamic effect plugin based Bezier Curve",
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-transform-runtime": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.4.4",
+    "@jiaminghi/fs": "^0.0.2",
+    "chai": "^4.2.0",
+    "ftp": "^0.3.10",
+    "mocha": "^6.1.4"
+  },
+  "homepage": "https://github.com/jiaming743/transition#readme",
+  "keywords": [
+    "bezierCurve",
+    "animation",
+    "transition"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "name": "@jiaminghi/transition",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiaming743/Transition.git"
+  },
+  "scripts": {
+    "build": "node build/index.js",
+    "deploy": "node deploy/index.js",
+    "prepublish": "npm run build",
+    "test": "mocha"
+  },
+  "version": "1.1.11"
+}

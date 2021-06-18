@@ -1,0 +1,75 @@
+{
+  "_from": "@jiaminghi/charts@*",
+  "_id": "@jiaminghi/charts@0.2.12",
+  "_inBundle": false,
+  "_integrity": "sha512-M++pdGrvazODF+27ROyn/jVwChFX8+4Tja0X3ibfye9EOO/ktzN+iMae0PIBSwW1F6X1diwldVYpfgSmXXJMMg==",
+  "_location": "/@jiaminghi/charts",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "@jiaminghi/charts@*",
+    "name": "@jiaminghi/charts",
+    "escapedName": "@jiaminghi%2fcharts",
+    "scope": "@jiaminghi",
+    "rawSpec": "*",
+    "saveSpec": null,
+    "fetchSpec": "*"
+  },
+  "_requiredBy": [
+    "/@jiaminghi/data-view"
+  ],
+  "_resolved": "https://registry.npmjs.org/@jiaminghi/charts/-/charts-0.2.12.tgz",
+  "_shasum": "02e42f7068981155c49c2ec7c2683ea571e0a2a8",
+  "_spec": "@jiaminghi/charts@*",
+  "_where": "D:\\Desktop\\Desktop\\DW-Webpack\\数据可视化大屏展示\\big-screen-vue-datav\\node_modules\\@jiaminghi\\data-view",
+  "author": {
+    "name": "JiaMing",
+    "email": "743192023@qq.com"
+  },
+  "bugs": {
+    "url": "https://github.com/DataV-Team/charts/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "@babel/runtime": "^7.5.5",
+    "@jiaminghi/c-render": "*"
+  },
+  "deprecated": false,
+  "description": "Lightweight charting",
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-transform-runtime": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.4.4",
+    "@jiaminghi/fs": "0.0.2",
+    "browserify": "^16.5.0",
+    "chai": "^4.2.0",
+    "ftp": "^0.3.10",
+    "mocha": "^6.1.4"
+  },
+  "homepage": "https://github.com/DataV-Team/charts#readme",
+  "keywords": [
+    "canvas",
+    "charts",
+    "line",
+    "bar",
+    "radar",
+    "pie"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "name": "@jiaminghi/charts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DataV-Team/charts.git"
+  },
+  "scripts": {
+    "build": "node build/index.js",
+    "deploy": "node deploy/index.js",
+    "prepublish": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.2.12"
+}

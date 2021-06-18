@@ -1,0 +1,73 @@
+{
+  "_from": "@jiaminghi/bezier-curve@*",
+  "_id": "@jiaminghi/bezier-curve@0.0.9",
+  "_inBundle": false,
+  "_integrity": "sha512-u9xJPOEl6Dri2E9FfmJoGxYQY7vYJkURNX04Vj64tdi535tPrpkuf9Sm0lNr3QTKdHQh0DdNRsaa62FLQNQEEw==",
+  "_location": "/@jiaminghi/bezier-curve",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "@jiaminghi/bezier-curve@*",
+    "name": "@jiaminghi/bezier-curve",
+    "escapedName": "@jiaminghi%2fbezier-curve",
+    "scope": "@jiaminghi",
+    "rawSpec": "*",
+    "saveSpec": null,
+    "fetchSpec": "*"
+  },
+  "_requiredBy": [
+    "/@jiaminghi/c-render"
+  ],
+  "_resolved": "https://registry.npmjs.org/@jiaminghi/bezier-curve/-/bezier-curve-0.0.9.tgz",
+  "_shasum": "5196aca93c8b061a612b4c3eabcedf9490cef6ee",
+  "_spec": "@jiaminghi/bezier-curve@*",
+  "_where": "D:\\Desktop\\Desktop\\DW-Webpack\\数据可视化大屏展示\\big-screen-vue-datav\\node_modules\\@jiaminghi\\c-render",
+  "author": {
+    "name": "JiaMing",
+    "email": "743192023@qq.com"
+  },
+  "bugs": {
+    "url": "https://github.com/jiaming743/BezierCurve/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "@babel/runtime": "^7.5.5"
+  },
+  "deprecated": false,
+  "description": "Bezier curve extension",
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-transform-runtime": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.4.4",
+    "@jiaminghi/fs": "^0.0.2",
+    "browserify": "^16.5.0",
+    "chai": "^4.2.0",
+    "ftp": "^0.3.10",
+    "mocha": "^6.1.4",
+    "uglifyjs": "^2.4.11"
+  },
+  "homepage": "https://github.com/jiaming743/BezierCurve#readme",
+  "keywords": [
+    "bezierCurve",
+    "polyline",
+    "smoothline",
+    "length"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "name": "@jiaminghi/bezier-curve",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiaming743/BezierCurve.git"
+  },
+  "scripts": {
+    "build": "node build/index.js",
+    "deploy": "node deploy/index.js",
+    "prepublish": "npm run build",
+    "test": "mocha"
+  },
+  "version": "0.0.9"
+}

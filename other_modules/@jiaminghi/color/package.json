@@ -1,0 +1,73 @@
+{
+  "_from": "@jiaminghi/color@*",
+  "_id": "@jiaminghi/color@0.1.1",
+  "_inBundle": false,
+  "_integrity": "sha512-M09+Sb5HGqVim0zo+nG5gU1v+6gXT8ptr0BZR6dMGt83XmCJgnZtO8s7llTW4hLFFFM5co6geZvTekqLpSPAAQ==",
+  "_location": "/@jiaminghi/color",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "@jiaminghi/color@*",
+    "name": "@jiaminghi/color",
+    "escapedName": "@jiaminghi%2fcolor",
+    "scope": "@jiaminghi",
+    "rawSpec": "*",
+    "saveSpec": null,
+    "fetchSpec": "*"
+  },
+  "_requiredBy": [
+    "/@jiaminghi/c-render"
+  ],
+  "_resolved": "https://registry.npmjs.org/@jiaminghi/color/-/color-0.1.1.tgz",
+  "_shasum": "bddf9012dfce6982d3829a983ffeb91ee9dda7b6",
+  "_spec": "@jiaminghi/color@*",
+  "_where": "D:\\Desktop\\Desktop\\DW-Webpack\\数据可视化大屏展示\\big-screen-vue-datav\\node_modules\\@jiaminghi\\c-render",
+  "author": {
+    "name": "JiaMing",
+    "email": "743192023@qq.com"
+  },
+  "bugs": {
+    "url": "https://github.com/jiaming743/Color/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "@babel/runtime": "^7.5.5"
+  },
+  "deprecated": false,
+  "description": "Color extension",
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-transform-runtime": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.4.4",
+    "@jiaminghi/fs": "0.0.2",
+    "chai": "^4.2.0",
+    "ftp": "^0.3.10",
+    "mocha": "^6.1.4"
+  },
+  "homepage": "https://github.com/jiaming743/Color#readme",
+  "keywords": [
+    "color",
+    "hex",
+    "rgb",
+    "bgba",
+    "darken",
+    "lighten"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "name": "@jiaminghi/color",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiaming743/Color.git"
+  },
+  "scripts": {
+    "build": "node build/index.js",
+    "deploy": "node deploy/index.js",
+    "prepublish": "npm run build",
+    "test": "mocha"
+  },
+  "version": "0.1.1"
+}
