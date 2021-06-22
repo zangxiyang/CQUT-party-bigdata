@@ -4,7 +4,7 @@ export default function useIndex() {
   // * 指向最外层容器
   const appRef = ref()
   // * 定时函数
-  const timer = ref(0)
+  const timer  = ref(null)
   // * 默认缩放值
   const scale = {
     width: '1',
