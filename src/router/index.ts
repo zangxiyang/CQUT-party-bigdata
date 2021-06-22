@@ -5,6 +5,16 @@ const routes: Array<RouteRecordRaw> = [
     path: '/',
     name: 'Index',
     component: () => import('../views/index/index.vue')
+  },
+  {
+    path: '/party',
+    name: 'Party',
+    component: () => import('../views/party/index.vue')
+  },
+  {
+    path: '/org',
+    name: 'Org',
+    component: () => import('../views/org/index.vue')
   }
 ]
 

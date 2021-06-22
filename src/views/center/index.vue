@@ -22,7 +22,7 @@ import { defineComponent, getCurrentInstance,reactive, ref, onMounted } from 'vu
 export default defineComponent({
   name: "index",
   setup(){
-    const { ctx } = getCurrentInstance();
+    const { proxy } = getCurrentInstance();
     const centerMyRef = ref(null);
     const data = reactive({
       list: [120, 132, 101, 134, 90, 230, 210,120, 132, 101, 134, 90],
@@ -30,7 +30,7 @@ export default defineComponent({
       list2: [150, 232, 201, 154, 190, 330, 410,150, 232, 201, 154, 190]
     })
     const initT = () => {
-      const myChart = ctx.echarts.init(document.getElementById('centerMycharts'));
+      const myChart = proxy.echarts.init(document.getElementById('centerMycharts'));
       console.log(myChart);
       myChart.setOption({
         title: {

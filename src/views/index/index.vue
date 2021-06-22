@@ -25,11 +25,14 @@
         </div>
 <!--        第二行  -->
         <div class="nav_bar">
-          <router-link to="http://dev.flyly.xyz/swagger-ui.html#!/20826243142796321160/listUsingGET_9">
-            <div class="content">
-              <div class="nav_title">组织管理</div>
+            <div class="content_header">
+              <router-link to="http://dev.flyly.xyz/swagger-ui.html#!/20826243142796321160/listUsingGET_9">
+                <div class="nav_title">返回</div>
+              </router-link>
+              <router-link to="http://dev.flyly.xyz/swagger-ui.html#!/20826243142796321160/listUsingGET_9">
+                <div class="nav_title">组织管理</div>
+              </router-link>
             </div>
-          </router-link>
           <div class="content">
             <div class="content_title">党员</div>
             <div class="content_number">
@@ -102,8 +105,6 @@ import {
   onMounted,
   onBeforeUnmount,
 } from 'vue'
-import { formatTime } from '@/utils/index'
-import { WEEK } from '@/constant/index'
 import useIndex from '@/utils/useDraw'
 import { title, subtitle, moduleInfo } from '@/constant/index'
 import Center from '../center/index.vue'
@@ -141,7 +142,6 @@ export default defineComponent({
     // 生命周期
     onMounted(() => {
       cancelLoading()
-      handleTime()
       // todo 屏幕适应
       windowDraw()
       calcRate()
@@ -157,16 +157,6 @@ export default defineComponent({
       setTimeout(() => {
         loading.value = false
       }, 500)
-    }
-
-    // todo 处理时间监听
-    const handleTime = () => {
-      timeInfo.setInterval = setInterval(() => {
-        const date = new Date()
-        timeInfo.dateDay = formatTime(date, 'HH: mm: ss')
-        timeInfo.dateYear = formatTime(date, 'yyyy-MM-dd')
-        timeInfo.dateWeek = WEEK[date.getDay()]
-      }, 1000)
     }
 
     // return
@@ -246,6 +236,22 @@ export default defineComponent({
       margin-top: 15px;
       display: flex;
       justify-content:space-around;
+      .content_header{
+        width: 450px;
+        height: 100px;
+        display: grid;
+        overflow: hidden;
+        grid-template-columns:  1fr 1fr;
+        .nav_title{
+          width: 220px;
+          background-color: #0f1325;
+          display: inline-block;
+          font-size: 25px;
+          text-align: center;
+          line-height: 100px;
+          color: white;
+        }
+      }
       .content{
         width: 450px;
         height: 100px;
@@ -258,11 +264,11 @@ export default defineComponent({
         }
         .content_title{
           font-size: 25px;
-          line-height: 50px;
+          line-height: 45px;
         }
         .content_number{
           .number{
-            line-height: 50px;
+            line-height: 55px;
             font-size: 40px;
             margin-right: 5px;
             color: #DF8652;
