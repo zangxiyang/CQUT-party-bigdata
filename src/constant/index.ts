@@ -2,8 +2,8 @@
 export const WEEK = ['周日', '周一', '周二', '周三', '周四', '周五', '周六']
 
 // 主题名称与副标题名称
-export const title = '大数据可视化平台'
-export const subtitle = ['数据分析1', '数据分析2', 'vue-big-screen']
+export const title = '党委大数据可视化平台'
+export const subtitle = ['组织管理', '党员', '预备党员','入党积极分子']
 
 // 各类标题与图标
 type ModuleInfo = {

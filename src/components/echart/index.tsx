@@ -37,7 +37,7 @@ export default defineComponent({
     const chart = ref<any>()
     // 暴露接口
     const { expose } = useContext();
-    
+
     /**
      * 初始化echart
      * @param data 数据项

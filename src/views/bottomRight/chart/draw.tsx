@@ -342,6 +342,7 @@ export default defineComponent({
         }
         // 手动触发更新
         if (chartRef.value) {
+          console.log(chartRef)
           // 通过初始化参数打入数据
           chartRef.value.initChart(options)
         }

@@ -9,8 +9,9 @@ import './assets/scss/style.scss';
 import './assets/icon/iconfont.css'
 // 引入 全局注册组件
 import PublicComponent from '@/components/componentInstall';
-
+import * as echarts from 'echarts';
 const app = createApp(App)
+app.config.globalProperties.echarts = echarts;
 app.use(PublicComponent)
 app.use(dataV)
 app.use(store)

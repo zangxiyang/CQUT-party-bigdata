@@ -6,7 +6,7 @@
           <i class="iconfont icon-chart-area" />
         </span>
         <div class="d-flex">
-          <span class="fs-xl text mx-2 mt-1">数据统计图</span>
+          <span class="fs-xl text mx-2 mt-1">党龄分布</span>
         </div>
       </div>
       <div>
@@ -30,7 +30,7 @@ export default defineComponent({
 $box-height: 520px;
 $box-width: 100%;
 .bottomRight {
-  padding: 14px 16px;
+  padding: 16px;
   height: $box-height;
   width: $box-width;
   border-radius: 5px;

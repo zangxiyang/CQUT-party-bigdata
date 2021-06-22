@@ -8,7 +8,7 @@
           <div class="d-flex jc-center">
             <dv-decoration-8 class="dv-dec-8" :color="['#568aea', '#000000']" />
             <div class="title">
-              <span class="title-text">{{ title }}</span>
+              <span class="title-text">党委大数据</span>
               <dv-decoration-6
                 class="dv-dec-6"
                 :reverse="true"
@@ -23,68 +23,70 @@
           </div>
           <dv-decoration-10 class="dv-dec-10-s" />
         </div>
-
-        <!-- 第二行 -->
-        <div class="d-flex jc-between px-2">
-          <div class="d-flex aside-width">
-            <div class="react-left ml-4 react-l-s">
-              <span class="react-before"></span>
-              <span class="text">{{ subtitle[0] }}</span>
+<!--        第二行  -->
+        <div class="nav_bar">
+          <router-link to="http://dev.flyly.xyz/swagger-ui.html#!/20826243142796321160/listUsingGET_9">
+            <div class="content">
+              <div class="nav_title">组织管理</div>
             </div>
-            <div class="react-left ml-3">
-              <span class="text">{{ subtitle[1] }}</span>
+          </router-link>
+          <div class="content">
+            <div class="content_title">党员</div>
+            <div class="content_number">
+              <span class="number">25</span>
+              <span class="person">人</span>
             </div>
           </div>
-          <div class="d-flex aside-width">
-            <div class="react-right bg-color-blue mr-3">
-              <span class="text fw-b">{{ subtitle[2] }}</span>
+          <div class="content">
+            <div class="content_title">预备党员</div>
+            <div class="content_number">
+              <span class="number">25</span>
+              <span class="person">人</span>
             </div>
-            <div class="react-right mr-4 react-l-s">
-              <span class="react-after"></span>
-              <span class="text">
-                {{ timeInfo.dateYear }} {{ timeInfo.dateWeek }}
-                {{ timeInfo.dateDay }}
-              </span>
+          </div>
+          <div class="content">
+            <div class="content_title">积极分子</div>
+            <div class="content_number">
+              <span class="number">25</span>
+              <span class="person">人</span>
             </div>
           </div>
         </div>
-
         <div class="body-box">
           <!-- 第三行数据 -->
           <div class="content-box">
             <div>
               <dv-border-box-12>
-                <center-left1 />
+                <center-left />
               </dv-border-box-12>
             </div>
+            <!-- 中间 -->
+            <dv-border-box-12>
+             <center></center>
+            </dv-border-box-12>
+            <!-- 中间 -->
             <div>
               <dv-border-box-12>
-                <center-left2 />
+                <center-right />
               </dv-border-box-12>
-            </div>
-            <!-- 中间 -->
-            <div>
-              <center />
-            </div>
-            <!-- 中间 -->
-            <div>
-              <center-right1 />
-            </div>
-            <div>
-              <dv-border-box-13>
-                <center-right2 />
-              </dv-border-box-13>
             </div>
           </div>
 
           <!-- 第四行数据 -->
           <div class="bototm-box">
-            <dv-border-box-13>
-              <bottom-left />
-            </dv-border-box-13>
             <dv-border-box-12>
-              <bottom-right />
+              <bottom-left1/>
             </dv-border-box-12>
+            <dv-border-box-12>
+              <bottom-left2/>
+            </dv-border-box-12>
+            <dv-border-box-12>
+              <bottom-right1/>
+            </dv-border-box-12>
+            <dv-border-box-12>
+              <bottom-right2/>
+            </dv-border-box-12>
+
           </div>
         </div>
       </div>
@@ -104,23 +106,25 @@ import { formatTime } from '@/utils/index'
 import { WEEK } from '@/constant/index'
 import useIndex from '@/utils/useDraw'
 import { title, subtitle, moduleInfo } from '@/constant/index'
-import CenterLeft1 from '../centerLeft1/index.vue'
-import CenterLeft2 from '../centerLeft2/index.vue'
 import Center from '../center/index.vue'
-import CenterRight1 from '../centerRight1/index.vue'
-import CenterRight2 from '../centerRight2/index.vue'
-import BottomLeft from '../bottomLeft/index.vue'
-import BottomRight from '../bottomRight/index.vue'
+import CenterLeft from '../centerLeft/index.vue'
+import CenterRight from '../centerRight/index.vue'
+import BottomLeft1 from '../bottomLeft1/index.vue'
+import BottomLeft2 from '../bottomLeft2/index.vue'
+import BottomRight1 from '../bottomRight1/index.vue'
+import BottomRight2 from '../bottomRight2/index.vue'
+
 
 export default defineComponent({
   components: {
-    CenterLeft1,
-    CenterLeft2,
     Center,
-    CenterRight1,
-    CenterRight2,
-    BottomLeft,
-    BottomRight
+    CenterLeft,
+    CenterRight,
+    BottomLeft1,
+    BottomLeft2,
+    BottomRight1,
+    BottomRight2
+
   },
   setup() {
     // * 加载标识
@@ -179,5 +183,116 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/scss/index.scss';
+
+#index {
+  color: #d3d6dd;
+  width: 1920px;
+  height: 1080px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: left top;
+  .bg {
+    width: 100%;
+    height: 100%;
+    padding: 16px 16px 0 16px;
+    background-image: url('../../assets/pageBg.png');
+    background-size: cover;
+    background-position: center center;
+    //filter: brightness(100%);
+  }
+
+  .host-body {
+    .dv-dec-10,
+    .dv-dec-10-s {
+      width: 33.3%;
+      height: 5px;
+    }
+    .dv-dec-10-s {
+      transform: rotateY(180deg);
+    }
+    .dv-dec-8 {
+      width: 200px;
+      height: 50px;
+    }
+    .title {
+      position: relative;
+      width: 500px;
+      text-align: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+
+      .title-text {
+        font-size: 36px;
+        position: absolute;
+        top:10px;
+        //bottom: 0;
+        left: 50%;
+        transform: translate(-50%);
+      }
+
+      .dv-dec-6 {
+        position: absolute;
+        top: 35px;
+        left: 50%;
+        width: 250px;
+        height: 8px;
+        transform: translate(-50%);
+      }
+    }
+    //第二行
+    .nav_bar{
+      margin-top: 15px;
+      display: flex;
+      justify-content:space-around;
+      .content{
+        width: 450px;
+        height: 100px;
+        background-color: #0f1325;
+        text-align: center;
+        .nav_title{
+          font-size: 25px;
+          color: white;
+          line-height: 100px;
+        }
+        .content_title{
+          font-size: 25px;
+          line-height: 50px;
+        }
+        .content_number{
+          .number{
+            line-height: 50px;
+            font-size: 40px;
+            margin-right: 5px;
+            color: #DF8652;
+          }
+          .person{
+            font-size: 16px;
+          }
+        }
+      }
+    }
+
+    .body-box {
+      margin-top: 15px;
+      display: flex;
+      flex-direction: column;
+
+      //下方区域的布局
+      .content-box {
+        display: grid;
+        grid-template-columns: 2fr 5fr 2fr;
+      }
+
+      // 底部数据
+      .bototm-box {
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: repeat(4, 25%);
+      }
+    }
+  }
+}
+
 </style>
