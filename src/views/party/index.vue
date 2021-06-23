@@ -36,21 +36,21 @@
           <div class="content">
             <div class="content_title">党员</div>
             <div class="content_number">
-              <span class="number">25</span>
+              <span class="number">{{partyMemberAll}}</span>
               <span class="person">人</span>
             </div>
           </div>
           <div class="content">
             <div class="content_title">预备党员</div>
             <div class="content_number">
-              <span class="number">25</span>
+              <span class="number">{{probationaryDyAll}}</span>
               <span class="person">人</span>
             </div>
           </div>
           <div class="content">
             <div class="content_title">积极分子</div>
             <div class="content_number">
-              <span class="number">25</span>
+              <span class="number">{{activistAll}}</span>
               <span class="person">人</span>
             </div>
           </div>
@@ -60,17 +60,35 @@
           <div class="content-box">
             <div>
               <dv-border-box-12>
-                <center-left />
+                <Suspense>
+                  <template #default>
+                    <!-- 异步组件加载完成之后展示的控件 -->
+                    <center-left  />
+                  </template>
+                  <template #fallback>
+                    <!-- 异步组件加载中展示的控件 -->
+                    <dv-loading>Loading...</dv-loading>
+                  </template>
+                </Suspense>
               </dv-border-box-12>
             </div>
             <!-- 中间 -->
             <dv-border-box-12>
-              <center></center>
+              <center :data="centerData"></center>
             </dv-border-box-12>
             <!-- 中间 -->
             <div>
               <dv-border-box-12>
-                <center-right />
+                <Suspense>
+                  <template #default>
+                    <!-- 异步组件加载完成之后展示的控件 -->
+                    <center-right />
+                  </template>
+                  <template #fallback>
+                    <!-- 异步组件加载中展示的控件 -->
+                    <dv-loading>Loading...</dv-loading>
+                  </template>
+                </Suspense>
               </dv-border-box-12>
             </div>
           </div>
@@ -78,16 +96,16 @@
           <!-- 第四行数据 -->
           <div class="bototm-box">
             <dv-border-box-12>
-              <bottom-left1/>
+              <bottom-left1 :b-left1="bLeft1" />
             </dv-border-box-12>
             <dv-border-box-12>
-              <bottom-left2/>
+              <bottom-left2 :b-left2="bLeft2"/>
             </dv-border-box-12>
             <dv-border-box-12>
-              <bottom-right1/>
+              <bottom-right1 :b-right1="bRight1" />
             </dv-border-box-12>
             <dv-border-box-12>
-              <bottom-right2/>
+              <bottom-right2 :b-right2="bRight2" />
             </dv-border-box-12>
 
           </div>
@@ -101,33 +119,64 @@
 import {
   defineComponent,
   ref,
+  toRefs,
+  provide,
   reactive,
   onMounted,
-  onBeforeUnmount,
+  onBeforeUnmount, watch, defineAsyncComponent,
 } from 'vue'
+import axios from "axios";
+const baseUrl ="http://dev.flyly.xyz/front/BigScreen/getBigScreen"
 import useIndex from '@/utils/useDraw'
-import { title, subtitle, moduleInfo } from '@/constant/index'
+import {  moduleInfo } from '@/constant/index'
 import Center from '../center/index.vue'
-import CenterLeft from '../centerLeft/index.vue'
-import CenterRight from '../centerRight/index.vue'
+// import CenterLeft from '../centerLeft/index.vue'
+// import CenterRight from '../centerRight/index.vue'
 import BottomLeft1 from '../bottomLeft1/index.vue'
 import BottomLeft2 from '../bottomLeft2/index.vue'
 import BottomRight1 from '../bottomRight1/index.vue'
 import BottomRight2 from '../bottomRight2/index.vue'
 
-
 export default defineComponent({
   components: {
     Center,
-    CenterLeft,
-    CenterRight,
+    CenterLeft:defineAsyncComponent(()=>import('../centerLeft/index.vue')),
+    CenterRight:defineAsyncComponent(()=>import('../centerRight/index.vue')),
     BottomLeft1,
     BottomLeft2,
     BottomRight1,
     BottomRight2
-
   },
   setup() {
+    //党员学历分布
+    const bRight2 = reactive({
+      data:[]
+    })
+    //年龄分布
+    const bRight1 = reactive({
+      data:[]
+    })
+    //党龄分布
+    const bLeft2 = reactive({
+      data: []
+    })
+    //性别比列
+    const bLeft1 = reactive({
+      data: []
+    })
+    //三会一课
+    const centerData = reactive({
+      list: [],
+      list1:[],
+      list2:[]
+    })
+    provide('location', location)
+    //党员首页信息
+    let getPartyAll =reactive({
+      partyMemberAll:0, //所有党员人数
+      probationaryDyAll:0, //所有预备党员
+      activistAll:0, //所有积极分子
+    })
     // * 加载标识
     const loading = ref<boolean>(true)
     // * 时间内容
@@ -140,23 +189,40 @@ export default defineComponent({
     // * 适配处理
     const { appRef, calcRate, windowDraw } = useIndex()
     // 生命周期
+    onMounted(async ()=>{
+      const res = await  axios.get(`${baseUrl}`)
+      if(res.status===200 && res.data.code===0){
+        const result =res.data.data;
+        console.log(res.data.data)
+        getPartyAll.partyMemberAll=result.partyMemberAll || 0;
+        getPartyAll.activistAll = result.activistAll || 0;
+        getPartyAll.probationaryDyAll = result.probationaryDyAll || 0;
+        centerData.list =result.shykList[0].frequencys
+        centerData.list1 =result.shykList[1].frequencys
+        centerData.list2 =result.shykList[2].frequencys
+        bLeft1.data=[{value:result.genderBlNan,name: '男'},{value:result.genderBlNv,name: '女'}]
+        bLeft2.data = [{name: '5年以下', value: result.dnAgeOne}, {name: '5-10年', value: result.dnAgeTwo}, {name: '10-15年', value: result.dnAgeThree}, {name: '15-20年', value: result.dnAgeFour}, {name: '20年以上', value: result.dnAgeFive},]
+        bRight1.data = [result.ageOne,result.ageTwo,result.ageThree,result.ageFour]
+        bRight2.data = [ { value: result.educationBkValue, name: "本科" }, { value: result.educationYjsValue, name: "研究生及研究生以上" },]
+      }else {
+        console.log("出错了")
+      }
+    })
     onMounted(() => {
       cancelLoading()
       // todo 屏幕适应
       windowDraw()
       calcRate()
     })
-
     onBeforeUnmount(() => {
       clearInterval(timeInfo.setInterval)
     })
-
     // methods
     // todo 处理 loading 展示
     const cancelLoading = () => {
       setTimeout(() => {
         loading.value = false
-      }, 500)
+      }, 1000)
     }
 
     // return
@@ -164,9 +230,13 @@ export default defineComponent({
       loading,
       timeInfo,
       appRef,
-      title,
-      subtitle,
-      moduleInfo
+      moduleInfo,
+      ...toRefs(getPartyAll),
+      centerData,
+      bLeft1,
+      bLeft2,
+      bRight1,
+      bRight2
     }
   }
 })

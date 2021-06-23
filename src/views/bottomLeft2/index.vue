@@ -20,31 +20,16 @@
 <script lang="js">
 import { defineComponent,reactive, } from 'vue';
 export default defineComponent({
+  props:{
+    bLeft2:{
+      type:Object,
+      required:true
+    }
+  },
   name: "index",
-  setup() {
+  setup(props) {
     const config = reactive({
-      data: [
-        {
-          name: '5年以下',
-          value: 167
-        },
-        {
-          name: '5-10年',
-          value: 123
-        },
-        {
-          name: '10-15年',
-          value: 98
-        },
-        {
-          name: '15-20年',
-          value: 75
-        },
-        {
-          name: '20年以上',
-          value: 100
-        },
-      ],
+      data:props.bLeft2.data,
       colors: ['#e062ae', '#fb7293', '#e690d1', '#32c5e9', '#96bfff'],
       unit: '人',
       showValue: true,

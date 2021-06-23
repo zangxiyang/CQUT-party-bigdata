@@ -20,13 +20,19 @@
 <script lang="js">
 import { defineComponent, getCurrentInstance,reactive, ref, onMounted } from 'vue';
 export default defineComponent({
+  props:{
+    bRight1:{
+      type:Object,
+      required:true
+    }
+  },
   name: "index",
-  setup(){
+  setup(props){
     const { proxy } = getCurrentInstance();
     const bottom2MyRef = ref(null);
-    const data = reactive({
-      data:[200, 300, 300, 900]
-    })
+    // const data = reactive({
+    //   data:[200, 300, 300, 900]
+    // })
     const initT = () => {
       const myChart = proxy.echarts.init(document.getElementById('bottomRight1Mycharts'));
       console.log(myChart);
@@ -101,7 +107,7 @@ export default defineComponent({
           type: "bar",
           // 修改柱子宽度
           barWidth: "25%",
-          data: data.data,
+          data: props.bRight1.data,
           itemStyle: {
             // 修改柱子圆角
             barBorderRadius: 10,

@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import store from './store'
+// import store from './store'
 import dataV from '@jiaminghi/data-view';
 // 引入全局css
 import './assets/scss/style.scss';
@@ -19,6 +19,6 @@ app.use(PublicComponent)
 app.use(dataV)
 app.use(ElementPlus)
 // app.use(BinTreeOrg)
-app.use(store)
+// app.use(store)
 app.use(router)
 app.mount('#app')

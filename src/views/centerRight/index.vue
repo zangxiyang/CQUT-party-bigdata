@@ -18,29 +18,13 @@
 
 <script>
 import { defineComponent, reactive } from 'vue'
+import axios from "axios";
+const baseUrl ="http://dev.flyly.xyz/front/BigScreen/getBigScreen"
 export default defineComponent({
-  setup() {
+  async setup() {
     const config = reactive({
       header: ['党支部', '开展次数'],
-      data: [
-        ['两江人工智能学院','25'],
-        ['两江人工智能学院','15'],
-        ['两江人工智能学院','25'],
-        ['两江人工智能学院','25'],
-        ['两江人工智能学院','25'],
-        ['两江人工智能学院','25'],
-        ['两江人工智能学院','25'],
-        ['两江人工智能学院','25'],
-        ['两江人工智能学院','25'],
-        ['两江人工智能学院','25'],
-        ['两江人工智能学院','25'],
-        ['两江人工智能学院','25'],
-        ['两江人工智能学院','25'],
-        ['两江人工智能学院','25'],
-        ['两江人工智能学院','25'],
-        ['两江人工智能学院','25']
-
-      ],
+      data: [],
       rowNum: 7, //表格行数
       headerHeight: 35,
       headerBGC: '#0f1325', //表头
@@ -50,6 +34,14 @@ export default defineComponent({
       columnWidth: [80],
       align: ['center']
     })
+    let arr =[]
+    const res = await axios.get(`${baseUrl}`)
+    res.data.data.zyHdList.map((item)=>{
+      arr.push([item.name,''+item.frequency])
+    })
+    config.data=arr
+    // console.log(res)
+
     return { config }
   }
 })
@@ -57,12 +49,12 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 $box-height: 500px;
-$box-width: 430px;
+$box-width: 420px;
 .centerRight {
-  padding:16px 16px 16px 16px;
+  padding:16px 10px;
   height: $box-height;
   width: $box-width;
-  border-radius: 5px;
+  border-radius: 10px;
   .bg-color-black {
     height: $box-height - 30px;
     border-radius: 10px;
@@ -75,8 +67,8 @@ $box-width: 430px;
     border-radius: 10px;
     overflow: hidden;
     .dv-scr-board {
-      height: 400px;
-      width: 400px;
+      height: 450px;
+      width: 395px;
     }
   }
 }

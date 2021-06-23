@@ -20,18 +20,25 @@
 <script lang="js">
 import { defineComponent, getCurrentInstance,reactive, ref, onMounted } from 'vue';
 export default defineComponent({
+  props:{
+    data:{
+      type:Object,
+      required:true
+    }
+  },
   name: "index",
-  setup(){
+  setup(props){
+    console.log(props.data)
     const { proxy } = getCurrentInstance();
     const centerMyRef = ref(null);
-    const data = reactive({
-      list: [120, 132, 101, 134, 90, 230, 210,120, 132, 101, 134, 90],
-      list1:[120, 132, 101, 134, 90, 230, 210,120, 132, 101, 134, 90],
-      list2: [150, 232, 201, 154, 190, 330, 410,150, 232, 201, 154, 190]
-    })
+    // const data = reactive({
+    //   list: [120, 132, 101, 134, 90, 230, 210,120, 132, 101, 134, 90],
+    //   list1:[120, 132, 101, 134, 90, 230, 210,120, 132, 101, 134, 90],
+    //   list2: [150, 232, 201, 154, 190, 330, 410,150, 232, 201, 154, 190]
+    // })
     const initT = () => {
       const myChart = proxy.echarts.init(document.getElementById('centerMycharts'));
-      console.log(myChart);
+      // console.log(myChart);
       myChart.setOption({
         title: {
           top:'2%',
@@ -87,21 +94,21 @@ export default defineComponent({
             type: 'line',
             smooth: true,
             stack: '总量',
-            data:data.list
+            data:props.data.list
           },
           {
             name: '支部委员会',
             type: 'line',
             smooth: true,
             stack: '总量',
-            data: data.list1
+            data: props.data.list1
           },
           {
             name: '党课',
             type: 'line',
             smooth: true,
             stack: '总量',
-            data:data.list2
+            data:props.data.list2
           }
         ]
       });
@@ -118,12 +125,12 @@ export default defineComponent({
 
 <style scoped lang="scss">
 $box-height: 500px;
-$box-width: 1030px;
+$box-width: 1050px;
 .center {
-  padding:16px 16px 16px 16px;
+  padding:16px 10px;
   height: $box-height;
   width: $box-width;
-  border-radius: 5px;
+  border-radius: 10px;
 .bg-color-black {
   height: $box-height - 30px;
   border-radius: 10px;

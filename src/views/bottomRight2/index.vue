@@ -20,16 +20,22 @@
 <script lang="js">
 import { defineComponent, getCurrentInstance,reactive, ref, onMounted } from 'vue';
 export default defineComponent({
+  props:{
+    bRight2:{
+      type:Object,
+      required:true
+    }
+  },
   name: "index",
-  setup(){
+  setup(props){
     const { proxy } = getCurrentInstance();
     const bottom3MyRef = ref(null);
-    const data = reactive({
-      data:[
-        { value: 50, name: "本科以下" },
-        { value: 20, name: "本科及本科以上" },
-      ]
-    })
+    // const data = reactive({
+    //   data:[
+    //     { value: 50, name: "本科以下" },
+    //     { value: 20, name: "本科及本科以上" },
+    //   ]
+    // })
     const initT = () => {
       const myChart = proxy.echarts.init(document.getElementById('bottomRight2Mycharts'));
       console.log(myChart);
@@ -62,7 +68,7 @@ export default defineComponent({
             itemStyle: {
               borderRadius: 8
             },
-            data: data.data,
+            data: props.bRight2.data,
           }
         ]
       });

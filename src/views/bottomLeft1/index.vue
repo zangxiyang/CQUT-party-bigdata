@@ -20,13 +20,20 @@
 <script lang="js">
 import { defineComponent, getCurrentInstance,reactive, ref, onMounted } from 'vue';
 export default defineComponent({
+  props:{
+    bLeft1:{
+      type:Object,
+      required:true
+    }
+  },
   name: "index",
-  setup(){
+  setup(props){
     const { proxy } = getCurrentInstance();
     const bottom1MyRef = ref(null);
-    const data = reactive({
-      data: [{value: 484, name: '男'}, {value: 300, name: '女'}]
-    })
+    // const bLeft1 = reactive({
+    //   data: [{value: 484, name: '男'}, {value: 300, name: '女'}]
+    // })
+    console.log(props.bLeft1)
     const initT = () => {
       const myChart = proxy.echarts.init(document.getElementById('bottomLeft1Mycharts'));
       console.log(myChart);
@@ -54,7 +61,7 @@ export default defineComponent({
             name: '访问来源',
             type: 'pie',
             radius: '50%',
-            data: data.data,
+            data: props.bLeft1.data,
             emphasis: {
               itemStyle: {
                 shadowBlur: 10,
