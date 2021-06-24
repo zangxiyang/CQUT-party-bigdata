@@ -122,7 +122,7 @@ import {
   onBeforeUnmount, watch, defineAsyncComponent,
 } from 'vue'
 import axios from "axios";
-import {bigScrrrnUrl,qianTaiUrl} from "@/utils/apiBaseUrl"
+import {bigScreenUrl,qianTaiUrl} from "@/utils/apiBaseUrl"
 import useIndex from '@/utils/useDraw'
 import {  moduleInfo } from '@/constant/index'
 import Center from '../center/index.vue'
@@ -156,7 +156,7 @@ export default defineComponent({
        router.push({path:'/org'})
      }
      // const baseApi = process.env.VUE_APP_BASE_API;
-     console.log(bigScrrrnUrl)
+     // console.log(bigScreenUrl)
      //党员学历分布
      const bRight2 = reactive({
        data:[]
@@ -199,10 +199,10 @@ export default defineComponent({
     const { appRef, calcRate, windowDraw } = useIndex()
     // 生命周期
     onMounted(async ()=>{
-      const res = await  axios.get(`${bigScrrrnUrl}`)
+      const res = await  axios.get(`${bigScreenUrl}`)
       if(res.status===200 && res.data.code===0){
         const result =res.data.data;
-        console.log(res.data.data)
+        // console.log(res.data.data)
         getPartyAll.partyMemberAll=result.partyMemberAll || 0;
         getPartyAll.activistAll = result.activistAll || 0;
         getPartyAll.probationaryDyAll = result.probationaryDyAll || 0;

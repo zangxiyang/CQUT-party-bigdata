@@ -20,7 +20,7 @@
 import {defineComponent, reactive } from 'vue'
 import axios from "axios";
 import { ElMessage } from 'element-plus'
-import {bigScrrrnUrl} from "@/utils/apiBaseUrl"
+import {bigScreenUrl} from "@/utils/apiBaseUrl"
 export default defineComponent({
   async setup() {
     const config = reactive({
@@ -36,7 +36,7 @@ export default defineComponent({
       align: ['center']
     })
     let arr =[]
-    const res = await axios.get(`${bigScrrrnUrl}`)
+    const res = await axios.get(`${bigScreenUrl}`)
     if (res.status===200 && res.data.code===0){
       res.data.data.ztdrList.map((item)=>{
         arr.push([item.name,''+item.frequency])

@@ -17,10 +17,10 @@
 </template>
 
 <script>
-import {defineComponent, reactive } from 'vue'
+import {defineComponent, reactive,inject } from 'vue'
 import axios from "axios";
 import { ElMessage } from 'element-plus'
-import {bigScrrrnUrl} from "@/utils/apiBaseUrl"
+import {bigScreenPartyUrl} from "@/utils/apiBaseUrl"
 export default defineComponent({
   async setup() {
     const config = reactive({
@@ -35,13 +35,15 @@ export default defineComponent({
       columnWidth: [80],
       align: ['center']
     })
+    const id = inject('id')
+    // console.log(id)
     let arr =[]
-    const res = await axios.get(`${bigScrrrnUrl}`)
+    const res = await axios.get(`${bigScreenPartyUrl}/${id}`)
     if (res.status===200 && res.data.code===0){
       res.data.data.ztdrList.map((item)=>{
-        arr.push([item.name,''+item.frequency])
+        arr.push([item.name])
       })
-      config.data=[["两江人工智能学院"],["两江人工智能学院"],["两江人工智能学院"],["两江人工智能学院"],["两江人工智能学院"]]
+      config.data= arr
     }else{
       ElMessage.error("加载错了，请联系管理员")
     }

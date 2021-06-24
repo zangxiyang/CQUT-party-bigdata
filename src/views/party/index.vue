@@ -122,7 +122,7 @@ import {
   onBeforeUnmount, defineAsyncComponent,
 } from 'vue'
 import axios from "axios";
-import {bigScrrrnUrl,qianTaiUrl} from "@/utils/apiBaseUrl"
+import {bigScreenPartyUrl, qianTaiUrl} from "@/utils/apiBaseUrl"
 import useIndex from '@/utils/useDraw'
 import {  moduleInfo } from '@/constant/index'
 import Center from '../center/index.vue'
@@ -149,7 +149,8 @@ export default defineComponent({
     const router = useRouter()
     //获取id
     const id =route.params.id;
-    console.log(id)
+    provide('id',id)
+    // console.log(id)
     // 跳转前台api
     const skipQianTai = ()=>{
       window.open(`${qianTaiUrl}`, '_blank');
@@ -159,7 +160,7 @@ export default defineComponent({
       router.push({path:'/org'})
     }
     // const baseApi = process.env.VUE_APP_BASE_API;
-    console.log(bigScrrrnUrl)
+    // console.log(bigScrrrnUrl)
     //党员学历分布
     const bRight2 = reactive({
       data:[]
@@ -202,10 +203,11 @@ export default defineComponent({
     const { appRef, calcRate, windowDraw } = useIndex()
     // 生命周期
     onMounted(async ()=>{
-      const res = await  axios.get(`${bigScrrrnUrl}`)
+      console.log(id)
+      const res = await  axios.get(`${bigScreenPartyUrl}/${id}`)
       if(res.status===200 && res.data.code===0){
         const result =res.data.data;
-        console.log(res.data.data)
+        // console.log(res.data.data)
         getPartyAll.partyMemberAll=result.partyMemberAll || 0;
         getPartyAll.activistAll = result.activistAll || 0;
         getPartyAll.probationaryDyAll = result.probationaryDyAll || 0;

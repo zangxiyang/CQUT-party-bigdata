@@ -33,7 +33,7 @@ export default defineComponent({
     console.log(props.bLeft1)
     const initT = () => {
       const myChart = proxy.echarts.init(document.getElementById('bottomLeft1Mycharts'));
-      console.log(myChart);
+      // console.log(myChart);
       myChart.setOption({
         title: {
           top:'2%',

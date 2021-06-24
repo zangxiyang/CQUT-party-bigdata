@@ -38,7 +38,7 @@ export default defineComponent({
     // })
     const initT = () => {
       const myChart = proxy.echarts.init(document.getElementById('bottomRight2Mycharts'));
-      console.log(myChart);
+      // console.log(myChart);
       myChart.setOption({
         legend: {
           orient: 'horizontal',

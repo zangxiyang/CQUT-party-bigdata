@@ -17,9 +17,9 @@
 </template>
 
 <script>
-import { defineComponent, reactive } from 'vue'
+import {defineComponent, inject, reactive} from 'vue'
 import axios from "axios";
-import {bigScrrrnUrl} from "@/utils/apiBaseUrl"
+import {bigScreenPartyUrl} from "@/utils/apiBaseUrl"
 import {ElMessage} from "element-plus";
 export default defineComponent({
   async setup() {
@@ -35,14 +35,15 @@ export default defineComponent({
       columnWidth: [80],
       align: ['center']
     })
+    const id = inject('id')
     let arr =[]
-    const res = await axios.get(`${bigScrrrnUrl}`)
+    const res = await axios.get(`${bigScreenPartyUrl}/${id}`)
     if (res.status===200 && res.data.code===0){
       res.data.data.zyHdList.map((item)=>{
-        arr.push([item.name,''+item.frequency])
+        arr.push([item.name])
       })
-      // config.data=arr
-      config.data=[["两江人工智能学院"],["两江人工智能学院"],["两江人工智能学院"],["两江人工智能学院"],["两江人工智能学院"]]
+      config.data=arr
+      // config.data=[["两江人工智能学院"],["两江人工智能学院"],["两江人工智能学院"],["两江人工智能学院"],["两江人工智能学院"]]
     }else {
       ElMessage.error("加载错了，请联系管理员")
     }

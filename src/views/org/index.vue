@@ -19,7 +19,7 @@
 <script>
 import {defineComponent, onMounted, reactive, toRefs} from "vue";
 import axios from "axios";
-const baseUrl ="http://dev.flyly.xyz/front"
+import {partyList} from '@/utils/apiBaseUrl'
 import {useRouter} from "vue-router";
 
 export default defineComponent({
@@ -35,7 +35,7 @@ setup(){
     router.push( { path: `/party/${id}`});
   }
   onMounted(async ()=>{
-    const res = await  axios.get(`${baseUrl}/common/party/list`)
+    const res = await  axios.get(`${partyList}`)
     if(res.status===200 && res.data.code ===0){
          party.data = res.data.data
     }
@@ -67,7 +67,7 @@ setup(){
     margin-top: 10px;
     display: flex;
     justify-content: center;
-    height: 500px;
+    height: 400px;
     .item{
       cursor: pointer;
       background-color: #F56C6C;
@@ -86,7 +86,7 @@ setup(){
     }
   }
   .footer{
-    height: calc(100vh - 600px);
+    height: calc(100vh - 700px);
   }
 }
 </style>

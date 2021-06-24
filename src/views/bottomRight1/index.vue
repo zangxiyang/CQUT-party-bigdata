@@ -35,7 +35,7 @@ export default defineComponent({
     // })
     const initT = () => {
       const myChart = proxy.echarts.init(document.getElementById('bottomRight1Mycharts'));
-      console.log(myChart);
+      // console.log(myChart);
       myChart.setOption({
         color: ["#3398DB"],
         tooltip: {

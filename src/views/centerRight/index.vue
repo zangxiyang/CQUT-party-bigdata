@@ -19,7 +19,7 @@
 <script>
 import { defineComponent, reactive } from 'vue'
 import axios from "axios";
-import {bigScrrrnUrl} from "@/utils/apiBaseUrl"
+import {bigScreenUrl} from "@/utils/apiBaseUrl"
 import {ElMessage} from "element-plus";
 export default defineComponent({
   async setup() {
@@ -36,7 +36,7 @@ export default defineComponent({
       align: ['center']
     })
     let arr =[]
-    const res = await axios.get(`${bigScrrrnUrl}`)
+    const res = await axios.get(`${bigScreenUrl}`)
     if (res.status===200 && res.data.code===0){
       res.data.data.zyHdList.map((item)=>{
         arr.push([item.name,''+item.frequency])
