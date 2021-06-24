@@ -6,7 +6,7 @@
           <i class="iconfont icon-vector" />
         </span>
         <div class="d-flex">
-          <span class="text mx-2">主题党日</span>
+          <span class="text mx-2">党课</span>
         </div>
       </div>
       <div class="d-flex mt-1 jc-center body-box">
@@ -24,7 +24,7 @@ import {bigScrrrnUrl} from "@/utils/apiBaseUrl"
 export default defineComponent({
   async setup() {
     const config = reactive({
-      header: ['党支部', '开展次数'],
+      header: ['党课'],
       data: [],
       rowNum: 7, //表格行数
       headerHeight: 35,
@@ -41,7 +41,7 @@ export default defineComponent({
       res.data.data.ztdrList.map((item)=>{
         arr.push([item.name,''+item.frequency])
       })
-      config.data=arr
+      config.data=[["两江人工智能学院"],["两江人工智能学院"],["两江人工智能学院"],["两江人工智能学院"],["两江人工智能学院"]]
     }else{
       ElMessage.error("加载错了，请联系管理员")
     }

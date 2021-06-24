@@ -10,21 +10,21 @@
         </div>
       </div>
       <div class="d-flex mt-1 jc-center body-box">
-        <dv-scroll-board class="dv-scr-board"  :config="config" ref="scrollBoard"/>
+        <dv-scroll-board class="dv-scr-board" :config="config" ref="scrollBoard"/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import {defineComponent, reactive } from 'vue'
+import { defineComponent, reactive } from 'vue'
 import axios from "axios";
-import { ElMessage } from 'element-plus'
 import {bigScrrrnUrl} from "@/utils/apiBaseUrl"
+import {ElMessage} from "element-plus";
 export default defineComponent({
   async setup() {
     const config = reactive({
-      header: ['党支部', '开展次数'],
+      header: ['主题党日'],
       data: [],
       rowNum: 7, //表格行数
       headerHeight: 35,
@@ -38,13 +38,15 @@ export default defineComponent({
     let arr =[]
     const res = await axios.get(`${bigScrrrnUrl}`)
     if (res.status===200 && res.data.code===0){
-      res.data.data.ztdrList.map((item)=>{
+      res.data.data.zyHdList.map((item)=>{
         arr.push([item.name,''+item.frequency])
       })
-      config.data=arr
-    }else{
+      // config.data=arr
+      config.data=[["两江人工智能学院"],["两江人工智能学院"],["两江人工智能学院"],["两江人工智能学院"],["两江人工智能学院"]]
+    }else {
       ElMessage.error("加载错了，请联系管理员")
     }
+
     return { config }
   }
 })
@@ -70,7 +72,7 @@ $box-width: 420px;
     border-radius: 10px;
     overflow: hidden;
     .dv-scr-board {
-      height: 400px;
+      height: 450px;
       width: 395px;
     }
   }

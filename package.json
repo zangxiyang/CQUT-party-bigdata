@@ -5,7 +5,9 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "serve:dev": "cross-env NODE_ENV=development dotenv -e .env.dev vue-cli-service serve",
+    "serve:prod": "cross-env NODE_ENV=production dotenv -e .env.prod vue-cli-service build"
   },
   "dependencies": {
     "@jiaminghi/data-view": "^2.10.0",

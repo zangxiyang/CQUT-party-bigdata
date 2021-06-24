@@ -19,7 +19,8 @@
 <script>
 import { defineComponent, reactive } from 'vue'
 import axios from "axios";
-const baseUrl ="http://dev.flyly.xyz/front/BigScreen/getBigScreen"
+import {bigScrrrnUrl} from "@/utils/apiBaseUrl"
+import {ElMessage} from "element-plus";
 export default defineComponent({
   async setup() {
     const config = reactive({
@@ -35,12 +36,15 @@ export default defineComponent({
       align: ['center']
     })
     let arr =[]
-    const res = await axios.get(`${baseUrl}`)
-    res.data.data.zyHdList.map((item)=>{
-      arr.push([item.name,''+item.frequency])
-    })
-    config.data=arr
-    // console.log(res)
+    const res = await axios.get(`${bigScrrrnUrl}`)
+    if (res.status===200 && res.data.code===0){
+      res.data.data.zyHdList.map((item)=>{
+        arr.push([item.name,''+item.frequency])
+      })
+      config.data=arr
+    }else {
+      ElMessage.error("加载错了，请联系管理员")
+    }
 
     return { config }
   }

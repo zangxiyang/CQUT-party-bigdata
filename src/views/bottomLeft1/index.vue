@@ -18,7 +18,7 @@
 </template>
 
 <script lang="js">
-import { defineComponent, getCurrentInstance,reactive, ref, onMounted } from 'vue';
+import { defineComponent, getCurrentInstance, ref, onMounted } from 'vue';
 export default defineComponent({
   props:{
     bLeft1:{
@@ -30,9 +30,6 @@ export default defineComponent({
   setup(props){
     const { proxy } = getCurrentInstance();
     const bottom1MyRef = ref(null);
-    // const bLeft1 = reactive({
-    //   data: [{value: 484, name: '男'}, {value: 300, name: '女'}]
-    // })
     console.log(props.bLeft1)
     const initT = () => {
       const myChart = proxy.echarts.init(document.getElementById('bottomLeft1Mycharts'));

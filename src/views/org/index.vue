@@ -20,16 +20,20 @@
 import {defineComponent, onMounted, reactive, toRefs} from "vue";
 import axios from "axios";
 const baseUrl ="http://dev.flyly.xyz/front"
+import {useRouter} from "vue-router";
 
 export default defineComponent({
 setup(){
+  const router = useRouter()
   const party = reactive({
     data:[]
   })
   const partyAll =()=>{
     console.log("")}
   const partyClick=(id)=>{
-    console.log(id)}
+    // console.log(id)
+    router.push( { path: `/party/${id}`});
+  }
   onMounted(async ()=>{
     const res = await  axios.get(`${baseUrl}/common/party/list`)
     if(res.status===200 && res.data.code ===0){

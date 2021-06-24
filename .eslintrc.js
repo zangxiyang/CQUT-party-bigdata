@@ -15,7 +15,7 @@ module.exports = {
     "@typescript-eslint/ban-ts-comment": "off",
     // 解决 Require 类型报错
     '@typescript-eslint/no-var-requires': 0,
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off'
+    'no-console': process.env.NODE_ENV === 'production' ? 'off' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'off' : 'off'
   }
 }

@@ -26,12 +26,8 @@
 <!--        第二行  -->
         <div class="nav_bar">
             <div class="content_header">
-              <router-link to="http://dev.flyly.xyz/swagger-ui.html#!/20826243142796321160/listUsingGET_9">
-                <div class="nav_title">返回</div>
-              </router-link>
-              <router-link to="http://dev.flyly.xyz/swagger-ui.html#!/20826243142796321160/listUsingGET_9">
-                <div class="nav_title">组织管理</div>
-              </router-link>
+              <div @click.prevent="skipQianTai" class="nav_title">前台</div>
+              <div @click.prevent="skipManage" class="nav_title">组织管理</div>
             </div>
           <div class="content">
             <div class="content_title">党员</div>
@@ -126,16 +122,17 @@ import {
   onBeforeUnmount, watch, defineAsyncComponent,
 } from 'vue'
 import axios from "axios";
-const baseUrl ="http://dev.flyly.xyz/front/BigScreen/getBigScreen"
+import {bigScrrrnUrl,qianTaiUrl} from "@/utils/apiBaseUrl"
 import useIndex from '@/utils/useDraw'
 import {  moduleInfo } from '@/constant/index'
 import Center from '../center/index.vue'
-// import CenterLeft from '../centerLeft/index.vue'
-// import CenterRight from '../centerRight/index.vue'
+
 import BottomLeft1 from '../bottomLeft1/index.vue'
 import BottomLeft2 from '../bottomLeft2/index.vue'
 import BottomRight1 from '../bottomRight1/index.vue'
 import BottomRight2 from '../bottomRight2/index.vue'
+import {ElMessage} from "element-plus";
+import {useRouter} from "vue-router";
 
 export default defineComponent({
   components: {
@@ -148,6 +145,18 @@ export default defineComponent({
     BottomRight2
   },
    setup() {
+     console.log(qianTaiUrl)
+    const router = useRouter()
+     // 跳转前台api
+     const skipQianTai = ()=>{
+       window.open(`${qianTaiUrl}`, '_blank');
+       // router.push({})
+     }
+     const skipManage = ()=>{
+       router.push({path:'/org'})
+     }
+     // const baseApi = process.env.VUE_APP_BASE_API;
+     console.log(bigScrrrnUrl)
      //党员学历分布
      const bRight2 = reactive({
        data:[]
@@ -190,7 +199,7 @@ export default defineComponent({
     const { appRef, calcRate, windowDraw } = useIndex()
     // 生命周期
     onMounted(async ()=>{
-      const res = await  axios.get(`${baseUrl}`)
+      const res = await  axios.get(`${bigScrrrnUrl}`)
       if(res.status===200 && res.data.code===0){
         const result =res.data.data;
         console.log(res.data.data)
@@ -205,7 +214,8 @@ export default defineComponent({
         bRight1.data = [result.ageOne,result.ageTwo,result.ageThree,result.ageFour]
         bRight2.data = [ { value: result.educationBkValue, name: "本科" }, { value: result.educationYjsValue, name: "研究生及研究生以上" },]
       }else {
-        console.log("出错了")
+        console.log("csc")
+        ElMessage.error("加载错了，请联系管理员")
       }
     })
     onMounted(() => {
@@ -236,7 +246,9 @@ export default defineComponent({
       bLeft1,
       bLeft2,
       bRight1,
-      bRight2
+      bRight2,
+      skipQianTai,
+      skipManage
     }
   }
 })
@@ -307,6 +319,7 @@ export default defineComponent({
       display: flex;
       justify-content:space-around;
       .content_header{
+        cursor: pointer;
         width: 450px;
         height: 100px;
         display: grid;
