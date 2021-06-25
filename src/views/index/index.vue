@@ -145,7 +145,7 @@ export default defineComponent({
     BottomRight2
   },
    setup() {
-     console.log(qianTaiUrl)
+     // console.log(qianTaiUrl)
     const router = useRouter()
      // 跳转前台api
      const skipQianTai = ()=>{
@@ -214,7 +214,7 @@ export default defineComponent({
         bRight1.data = [result.ageOne,result.ageTwo,result.ageThree,result.ageFour]
         bRight2.data = [ { value: result.educationBkValue, name: "本科" }, { value: result.educationYjsValue, name: "研究生及研究生以上" },]
       }else {
-        console.log("csc")
+        // console.log("csc")
         ElMessage.error("加载错了，请联系管理员")
       }
     })

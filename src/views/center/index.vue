@@ -28,7 +28,7 @@ export default defineComponent({
   },
   name: "index",
   setup(props){
-    console.log(props.data)
+    // console.log(props.data)
     const { proxy } = getCurrentInstance();
     const centerMyRef = ref(null);
     // const data = reactive({

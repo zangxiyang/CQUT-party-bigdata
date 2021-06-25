@@ -30,7 +30,7 @@ export default defineComponent({
   setup(props){
     const { proxy } = getCurrentInstance();
     const bottom1MyRef = ref(null);
-    console.log(props.bLeft1)
+    // console.log(props.bLeft1)
     const initT = () => {
       const myChart = proxy.echarts.init(document.getElementById('bottomLeft1Mycharts'));
       // console.log(myChart);
